@@ -5,7 +5,9 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "chroma-js": "^2.0.3",
     "d3": "^5.9.2",
+    "lodash": "^4.17.11",
     "queue": "^6.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
