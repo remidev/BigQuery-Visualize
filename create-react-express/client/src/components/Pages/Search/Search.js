@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Header } from 'semantic-ui-react'
 
-const About = () => (
+const Search = () => (
   <Container text>
-    <Header as='h2'>Header</Header>
+    <Header as='h2'>Search</Header>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
       Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
@@ -31,4 +31,4 @@ const About = () => (
   </Container>
 )
 
-export default About
+export default Search
