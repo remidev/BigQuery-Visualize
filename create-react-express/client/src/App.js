@@ -47,7 +47,7 @@ class App extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" components={ComboCharts} />
+            <Route exact path="/" component={ComboCharts} />
             <Route exact path="/home" component={ZoomChart} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/about" component={About} />
