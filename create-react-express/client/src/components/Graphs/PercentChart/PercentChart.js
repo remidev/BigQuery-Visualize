@@ -49,6 +49,16 @@ const renderTooltipContent = o => {
 };
 
 class PercentChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
   render() {
     return (
       <AreaChart

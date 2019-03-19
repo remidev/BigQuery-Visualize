@@ -48,7 +48,7 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" components={d3ScatterPlot} />
-            <Route exact path="/home" component={PieRadialChart} />
+            <Route exact path="/home" component={ZoomChart} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/about" component={About} />
             {/* <Route exact path="/profile" component={Profile} /> */}

@@ -60,11 +60,17 @@ const initialState = {
 };
 
 class ZoomChart extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = initialState;
+    console.log(props);
+    this.state={
+     data: data,
+     state: initialState
+    }
+    console.log(data);
   }
-
+  //heck yeah
   zoom() {
     let { refAreaLeft, refAreaRight, data } = this.state;
 
@@ -196,7 +202,7 @@ class ZoomChart extends React.Component {
               strokeOpacity={0.3}
             />
           ) : null}
-          {/* <Brush/> */}
+          {/* <Brush/>  No Need for Brush*/} 
         </LineChart>
       </div>
     );

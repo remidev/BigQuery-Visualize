@@ -22,6 +22,15 @@ const data = [
 ];
 
 class BarChartN extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
   render() {
     return (
       <BarChart

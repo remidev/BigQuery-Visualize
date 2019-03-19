@@ -40,6 +40,16 @@ const renderCustomizedLabel = ({
 };
 
 class PieChartN extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
   render() {
     return (
       <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>

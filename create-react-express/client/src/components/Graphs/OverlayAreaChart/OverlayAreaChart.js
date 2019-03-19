@@ -21,6 +21,16 @@ const data = [
 ];
 
 class OverlayAreaChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
     render () {
         return (
           <AreaChart width={600} height={400} data={data}

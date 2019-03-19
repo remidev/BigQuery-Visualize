@@ -23,6 +23,16 @@ const data = [
 ];
 
 class LineChartWithReference extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
   render() {
     return (
       <LineChart

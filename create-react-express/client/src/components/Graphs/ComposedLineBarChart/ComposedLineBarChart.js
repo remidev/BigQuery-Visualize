@@ -37,6 +37,16 @@ const data = [
 ];
 
 class ComposedLineBarChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
     render () {
         return (
           <ComposedChart width={600} height={400} data={data}

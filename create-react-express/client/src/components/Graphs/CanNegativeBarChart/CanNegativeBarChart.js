@@ -13,6 +13,16 @@ const data = [
 ];
 
 class CanNegativeBarChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: data,
+    }
+    console.log(data);
+  }
+  
     render () {
         return (
           <BarChart width={600} height={300} data={data}
