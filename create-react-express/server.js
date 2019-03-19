@@ -3,8 +3,13 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Credentials environment variable
+// New credentials object can be created at:
+// Updated path to credentials object needs to be supplied
 process.env.GOOGLE_APPLICATION_CREDENTIALS =
   "C:/Users/teddy/Downloads/decoded-reducer-234800-f5cfbc301aaf.json";
+
 // Imports the Google Cloud client library
 const { BigQuery } = require("@google-cloud/bigquery");
 
