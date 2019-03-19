@@ -60,4 +60,5 @@ async function query() {
   });
 }
 
-query(...process.argv.slice(2)).catch(console.error);
+// NOTE!: un-comment this line to log big query response data
+// query(...process.argv.slice(2)).catch(console.error);
