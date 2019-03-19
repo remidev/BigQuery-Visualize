@@ -46,6 +46,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
+    
     var Datafile = _.chain(TestingJsonFile)
       .filter(d => d)
       .map(d => {
