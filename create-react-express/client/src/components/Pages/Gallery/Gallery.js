@@ -4,6 +4,11 @@ import GalleryFile from "../../GalleryFile/GalleryFile";
 import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
 
+const styles={
+ marginLeft:"auto",
+ marginRight: "auto",
+ width:"50%",
+}
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
@@ -58,9 +63,30 @@ class Gallery extends React.Component {
 
     return (
       <div>
+
+<div class="ui segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <div class="column">
+    <div >
+        <h4 class="ui center aligned grid">Tools</h4>
+        <hr></hr>
         {unique.map((checkers, i) => {
-          return <label><input type="checkbox" key={i} name={checkers} onClick={this.handleChange}/>{checkers}</label>
+          return <label style={styles}><input type="checkbox" key={i} name={checkers} onClick={this.handleChange}/>{checkers}</label>
         })}
+        </div>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    and
+  </div>
+</div>
+       
         <div>{GraphComponent}</div>
       </div>
     );

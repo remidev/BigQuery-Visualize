@@ -45,7 +45,7 @@ const GalleryData = {
   ComboCharts: {
     id:4,
     chart: <ComboCharts />,
-    type: "Mix",
+    type: "Mixed",
     chartName: "Combo Chart"
   },
   ZoomChart: {
@@ -57,13 +57,13 @@ const GalleryData = {
   OverlayAreaChart: {
     id:6,
     chart: <OverlayAreaChart />,
-    type: "Area Chart",
+    type: "AreaChart",
     chartName: "Overlay Area Chart"
   },
   PercentChart: {
     id:7,
     chart: <PercentChart />,
-    type: "Area Chart",
+    type: "AreaChart",
     chartName: "Percent Chart"
   },
 
@@ -106,7 +106,7 @@ const GalleryData = {
   ComposedDataChart: {
     id:14,
     chart: <ComposedDataChart/>,
-    type: "Data Chart",
+    type: "DataChart",
     chartName: "Composed Data Chart",
   },
   ComposedLineBarChart: {
@@ -124,13 +124,13 @@ const GalleryData = {
   PieChartN:{
     id:17,
     chart: <PieChartN/>,
-    type: "Pie Chart",
+    type: "PieChart",
     chartName: "Simple Pie Chart",
   },
   ScatterChartN: {
     id:18,
     chart: <ScatterChartN/>,
-    type: "Scatter Chart",
+    type: "ScatterChart",
     chartName: "Simple Scatter Chart",
   },
   // ScatterPlotColor: {
@@ -142,13 +142,13 @@ const GalleryData = {
   ScatterChartLabels: {
     id:20,
     chart: <ScatterChartLabels/>,
-    type: "Scatter Chart",
+    type: "ScatterChart",
     chartName: "Scatter Chart Labeled",
   },
   ScatterChartMultiY: {
     id:21,
     chart: <ScatterChartMultiY/>,
-    type: "Scatter Chart",
+    type: "ScatterChart",
     chartName: "Scatter Chart (Multiple)",
   },
   RadarChartN: {
