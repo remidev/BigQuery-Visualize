@@ -3,7 +3,7 @@ import { Grid, Menu } from "semantic-ui-react";
 
 function Nav() {
   return (
-    <nav class="ui inverted menu">
+    <nav className="ui inverted menu">
 
       <Grid padded className="tablet computer only">
         <Menu borderless inverted fluid fixed="top">

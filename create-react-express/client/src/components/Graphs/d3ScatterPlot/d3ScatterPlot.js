@@ -6,12 +6,12 @@ import chroma from "chroma-js";
 import TestingJsonFile from "../../../TestingJsonFile";
 import "semantic-ui-css/semantic.min.css";
 
-var styles = {
-  backgroundColor: "lightgrey"
-};
+// var styles = {
+//   backgroundColor: "lightgrey"
+// };
 
-var width = 600;
-var height = 300;
+// var width = 600;
+// var height = 300;
 var margin = { left: 20, top: 20, right: 20, bottom: 20 };
 var radius = 10;
 
@@ -19,26 +19,28 @@ var radius = 10;
 var xScale = d3
   .scaleBand()
   .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-  .range([margin.left, width - margin.right]); // 0-6 sets the range to 0-1 discretes
+  .range([margin.left, 600 - margin.right]); // 0-6 sets the range to 0-1 discretes
 
 var colorScale = chroma.scale(["green", "yellow", "red"]); //0-1
 var amountScale = d3.scaleLog();
 
 var simulation = d3
   .forceSimulation()
-  .force("center", d3.forceCenter(width / 2, height / 2))
+  .force("center", d3.forceCenter(this.state.width / 2, this.state.height / 2))
   .force("charge", d3.forceManyBody())
   .force("collide", d3.forceCollide(radius))
   .force("x", d3.forceX(d => d.focusX))
   .force("y", d3.forceY(d => d.focusY))
   .stop();
 
-class Home extends Component {
+class ScatterPlotColor extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      Datafile: []
+      Datafile: [],
+      width:600,
+      height:300
     };
 
     this.forceTick = this.forceTick.bind(this);
@@ -126,10 +128,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <svg style={styles} width={width} height={height} ref="container" />
+        <svg width={this.state.width} height={this.state.height} ref="container" />
       </div>
     );
   }
 }
 
-export default Home;
+export default ScatterPlotColor;

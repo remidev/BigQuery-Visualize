@@ -4,10 +4,10 @@ import { PieChart, Pie, Cell } from "recharts";
 //Sector
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
+  // { name: "Group A", value: 400 },
+  // { name: "Group B", value: 300 },
+  // { name: "Group C", value: 300 },
+  // { name: "Group D", value: 200 }
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -52,7 +52,7 @@ class PieChartN extends React.Component {
   
   render() {
     return (
-      <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+      <PieChart width={600} height={300} onMouseEnter={this.onPieEnter}>
         <Pie
           data={data}
           cx={300}
