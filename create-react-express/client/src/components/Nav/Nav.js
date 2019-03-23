@@ -1,9 +1,13 @@
 import React from "react";
 import { Grid, Menu } from "semantic-ui-react";
-
+import "./Nav.css";
+const styles={
+  margin:0,
+  padding:0,
+}
 function Nav() {
   return (
-    <nav className="ui inverted menu">
+    <nav stlye={styles} className="ui inverted menu">
 
       <Grid padded className="tablet computer only">
         <Menu borderless inverted fluid fixed="top">
