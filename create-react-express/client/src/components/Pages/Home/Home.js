@@ -175,7 +175,7 @@ const HomepageLayout = () => (
               bordered
               rounded
               size="large"
-              src="/images/wireframe/white-image.png"
+              // src="./DivGif1.gif"
             />
           </Grid.Column>
         </Grid.Row>
