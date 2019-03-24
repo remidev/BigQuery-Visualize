@@ -1,10 +1,10 @@
 import React from "react";
-import "semantic-ui-css/semantic.min.css";
-function Footer() {
+
+function Header() {
   return (
     <div>
-      <h1 className="text-center">Footer</h1>
+      <h1 className="text-center">Web Scrape With Us!</h1>
     </div>
-  )
+  );
 }
-export default Footer;
+export default Header;

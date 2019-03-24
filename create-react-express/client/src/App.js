@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 
 //Header Nav Footer
-import Header from "./components/Header/Header"
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer"
 //Pages Include {Include Header,Nav,Footer Always}
@@ -34,6 +33,7 @@ class App extends Component {
             {/* <Route exact path="/help" component={Help} /> */}
             <Route component={NoMatch} />
           </Switch>
+          {/* <Footer/> */}
         </div>
       </Router>
     );
