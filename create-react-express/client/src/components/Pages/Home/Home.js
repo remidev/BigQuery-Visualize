@@ -23,7 +23,7 @@ const Home = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Data Analysis"
+      content="Abtract Data Analytics"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -34,7 +34,7 @@ const Home = ({ mobile }) => (
     />
     <Header
       as="h2"
-      content="We Supply Information. You Draw the conclusions"
+      content="We Supply Information. You Draw Conclusions"
       inverted
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",

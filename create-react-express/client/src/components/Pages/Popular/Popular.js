@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Header } from 'semantic-ui-react'
 
-const Search = () => (
+const Popular = () => (
   <Container text>
-    <Header as='h2'>Search</Header>
+    <Header as='h2'>Popular</Header>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
       Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
@@ -31,4 +31,4 @@ const Search = () => (
   </Container>
 )
 
-export default Search
+export default Popular
