@@ -130,7 +130,7 @@ class ZoomChart extends React.Component {
     return (
       <div className="highlight-bar-charts text-center">
         <a
-          href="javascript: void(0);"//Need this line
+          href="javascript:void(0)"//Need this line
           className="btn update"
           onClick={this.zoomOut.bind(this)}
         >

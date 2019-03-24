@@ -3,12 +3,12 @@ import "semantic-ui-css/semantic.min.css";
 import {
   ScatterChart,
   Scatter,
-  Cell,
+  // Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  // Legend
 } from "recharts";
 const data01 = [
   // { x: 100, y: 200, z: 200 },
