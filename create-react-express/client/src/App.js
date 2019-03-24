@@ -4,7 +4,6 @@ import "semantic-ui-css/semantic.min.css";
 
 //Header Nav Footer
 import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer"
 //Pages Include {Include Header,Nav,Footer Always}
 
 // import Home from "./components/Pages/Home/Home";
