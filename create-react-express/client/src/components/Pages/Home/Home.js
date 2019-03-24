@@ -42,7 +42,7 @@ const Home = ({ mobile }) => (
         marginTop: mobile ? "0.5em" : "1.5em"
       }}
     />
-    <Button primary size="huge">
+    <Button href="/search" primary size="huge">
       Get Started
       <Icon name="right arrow" />
     </Button>
@@ -181,7 +181,7 @@ const HomepageLayout = () => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Button size="huge">Check Them Out</Button>
+            <Button href="/statistics" size="huge">Check Them Out</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -224,7 +224,7 @@ const HomepageLayout = () => (
           user to draw their own conclusions. We simply generate the graphs and information.
           Happy Data Analyzing!
         </p>
-        <Button as="a" size="large">
+        <Button as="a" href="/about" size="large">
           About Us
         </Button>
 
@@ -234,7 +234,7 @@ const HomepageLayout = () => (
           horizontal
           style={{ margin: "3em 0em", textTransform: "uppercase" }}
         >
-          <a href="#root">Case Studies</a>
+          <p>Case Studies</p>
         </Divider>
 
         <Header as="h3" style={{ fontSize: "2em" }}>
@@ -244,7 +244,7 @@ const HomepageLayout = () => (
           Yes I know you probably disregarded the earlier boasts as we the creators did little to nothing.
           But check out some amazing informational statistics our users discovered!
         </p>
-        <Button as="a" size="large">
+        <Button as="a" href="/popular" size="large">
          Popular Discoveries
         </Button>
       </Container>
@@ -258,9 +258,10 @@ const HomepageLayout = () => (
               <Header inverted as="h4" content="Links" />
               <List link inverted>
                 <List.Item as="a" href="#root">Back to Top</List.Item>
-                <List.Item as="a">Popular</List.Item>
-                <List.Item as="a">Search</List.Item>
-                <List.Item as="a">About</List.Item>
+                <List.Item as="a" href="/popular">Popular</List.Item>
+                <List.Item as="a" href="/search">Search</List.Item>
+                <List.Item as="a" href="/statistics">Statistics</List.Item>
+                <List.Item as="a" href="/about">About</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>

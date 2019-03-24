@@ -18,6 +18,7 @@ function Nav() {
           <Menu.Menu position="right">
             <Menu.Item as="a" href="/popular">Latest</Menu.Item>
             <Menu.Item as="a" href="/search">Search!</Menu.Item>
+            <Menu.Item as="a" href="/statistics">Statistics</Menu.Item>
             <Menu.Item as="a" href="/about">About</Menu.Item>
             {/* <Menu.Item as="a" href="/profile">Profile</Menu.Item>
             <Menu.Item as="a" href="/help">Help</Menu.Item> */}
