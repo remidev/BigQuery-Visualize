@@ -1,69 +1,133 @@
+// Enable Strict Mode
+//========================================================================
+("use strict");
+//========================================================================
+
+// Require Dependencies
+//========================================================================
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Credentials environment variable
-// New credentials object can be created at:
-// Updated path to credentials object needs to be supplied
-process.env.GOOGLE_APPLICATION_CREDENTIALS =
-  "C:/Users/teddy/Downloads/decoded-reducer-234800-f5cfbc301aaf.json";
-
-// Imports the Google Cloud client library
 const { BigQuery } = require("@google-cloud/bigquery");
+//========================================================================
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Instantiate Express App
+//========================================================================
+const app = express();
+//========================================================================
 
-// Serve up static assets (usually on heroku)
+// Configure Port For Local/Heroku
+//========================================================================
+const PORT = process.env.PORT || process.argv[2] || 8080;
+//========================================================================
+
+// Instantiate Google BigQuery Client
+//========================================================================
+const bigquery = new BigQuery();
+//========================================================================
+
+// Middleware
+//========================================================================
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
-// Add routes, both API and view
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(routes);
+//========================================================================
 
-// Connect to the Mongo DB
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/kt_database");
+// Mongoose Connection
+//========================================================================
+const URI = process.env.MONGODB_URI || "mongodb://localhost/database";
 
-// Start the API server
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+};
+
+// Attempt Connection
+mongoose.connect(URI, options).then(
+  result => {
+    // Connection Success
+    console.log(
+      `Connected to database '${result.connections[0].name}' on ${
+        result.connections[0].host
+      }:${result.connections[0].port}`
+    );
+  },
+  err => {
+    // Connection Fail
+    console.log("There was an error with your connection:", err);
+  }
+);
+//========================================================================
+
+// Express Connection
+//========================================================================
 app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  console.log(
+    `🌎  ==> API Server now listening on port ${PORT} at localhost:${PORT}`
+  );
 });
+//========================================================================
 
-// Creates a client
-const bigquery = new BigQuery();
+// Google BigQuery Query Code [!MOVE THIS ELSEWHERE!]
+//========================================================================
 
+// Asynchronous query function
+//============================
 async function query() {
-  // The SQL query to run
-  const sqlQuery = `SELECT
-    CONCAT(
-      'https://stackoverflow.com/questions/',
-      CAST(id as STRING)) as url,
-    view_count
-    FROM \`bigquery-public-data.stackoverflow.posts_questions\`
-    WHERE tags like '%google-bigquery%'
-    ORDER BY view_count DESC
-    LIMIT 10`;
+  // SQL Query String
+  const sqlQuery = `#Query-Goes-Here`;
+  // Query Options,
+  // See link for list of options:
 
   const options = {
     query: sqlQuery,
-    // Location must match that of the dataset(s) referenced in the query.
     location: "US"
   };
 
-  // Runs the query
+  // Runs and stores the query results
   const [rows] = await bigquery.query(options);
 
   console.log("Query Results:");
   rows.forEach(row => {
+    // Accessing the data within the rows
     const url = row["url"];
     const viewCount = row["view_count"];
     console.log(`url: ${url}, ${viewCount} views`);
   });
 }
 
-// NOTE!: un-comment this line to log big query response data
-// query(...process.argv.slice(2)).catch(console.error);
+// Query function call
+//query().catch(console.error);
+
+// __BigQuery Code Snippets__
+//========================================================================
+
+// Alternate query with cmd line params
+//query(...process.argv.slice(2)).catch(console.error);
+
+// Query Option Params
+// Full list & Explanation here:
+// https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#request-body
+
+// Example Query
+/*
+`
+SELECT
+  CONCAT( 'https://stackoverflow.com/questions/', CAST(id AS STRING) ) AS url,
+  view_count
+FROM
+  `bigquery-public-data.stackoverflow.posts_questions`
+WHERE
+  tags LIKE '%google-bigquery%'
+ORDER BY
+  view_count DESC
+LIMIT
+  10
+`
+*/
+
+//========================================================================
