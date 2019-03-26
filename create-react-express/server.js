@@ -100,7 +100,6 @@ async function query() {
   });
 }
 
-<<<<<<< HEAD
 // Query function call
 //query().catch(console.error);
 
@@ -132,7 +131,5 @@ LIMIT
 */
 
 //========================================================================
-=======
 // NOTE!: un-comment this line to log big query response data
-query(...process.argv.slice(2)).catch(console.error); 
->>>>>>> cb2e8324b5343ef52cf8c4243c428c49a018d459
+query(...process.argv.slice(2)).catch(console.error);
