@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Header } from "semantic-ui-react";
+// import { Container, Header } from "semantic-ui-react";
 import GalleryFile from "../../GalleryFile/GalleryFile";
 import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
@@ -64,17 +64,17 @@ class Gallery extends React.Component {
     return (
       <div>
 
-<div class="ui segment">
-  <div class="ui two column very relaxed grid">
-    <div class="column">
+<div className="ui segment">
+  <div className="ui two column very relaxed grid">
+    <div className="column">
       <p></p>
       <p></p>
       <p></p>
       <p></p>
     </div>
-    <div class="column">
+    <div className="column">
     <div >
-        <h4 class="ui center aligned grid">Tools</h4>
+        <h4 className="ui center aligned grid">Tools</h4>
         <hr></hr>
         {unique.map((checkers, i) => {
           return <label style={styles}><input type="checkbox" key={i} name={checkers} onClick={this.handleChange}/>{checkers}</label>
@@ -82,7 +82,7 @@ class Gallery extends React.Component {
         </div>
     </div>
   </div>
-  <div class="ui vertical divider">
+  <div className="ui vertical divider">
     and
   </div>
 </div>

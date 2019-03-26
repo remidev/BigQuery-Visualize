@@ -30,7 +30,7 @@ const GalleryData = {
     type: "LineChart",
     chartName: "Simple Line Chart"
   },
-  BiaxialBarChart: {
+  BiaxialLineChart: {
     id:2,
     chart: <BiaxialLineChart />,
     type: "BarChart",

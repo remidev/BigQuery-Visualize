@@ -1,37 +1,211 @@
-import React from 'react'
-import { Container, Header } from 'semantic-ui-react'
-
-
-const About = () => (
-
-
+import React from "react";
+import {
+  // Button,
+  Divider,
+  // Form,
+  Grid,
+  Segment,
+  Card,
+  Icon,
+  Image,
+  Accordion,
+  Container,
   
-<div class="ui inverted segment">
-  <div class="ui inverted accordion">
-    <div class="active title">
-      <i class="dropdown icon"></i>
-      What is a dog?
-    </div>
-    <div class="active content">
-      <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-    </div>
-    <div class="title">
-      <i class="dropdown icon"></i>
-      What kinds of dogs are there?
-    </div>
-    <div class="content">
-      <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-    </div>
-    <div class="title">
-      <i class="dropdown icon"></i>
-      How do you acquire a dog?
-    </div>
-    <div class="content">
-      <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-      <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-    </div>
-  </div>
-</div>
-)
+} from "semantic-ui-react";
+import "./About.css";
 
-export default About
+class About extends React.Component {
+  state = { activeIndex: 0 };
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
+  };
+
+  render() {
+    const { activeIndex } = this.state;
+
+    return (
+      <div>
+        <Segment placeholder>
+          <Grid columns={2} relaxed="very" stackable>
+            <Grid.Column>
+              <Card>
+                <Image src="/images/avatar/large/matthew.png" />
+                <Card.Content>
+                  <Card.Header>Kevin</Card.Header>
+                  <Card.Meta>
+                    <span className="date">Joined in 2015</span>
+                  </Card.Meta>
+                  <Card.Description>
+                    Matthew is a musician living in Nashville.
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <p>
+                    <Icon name="user" />
+                    22 Friends
+                  </p>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+
+            <Grid.Column verticalAlign="middle">
+              <Card>
+                <Image src="/images/avatar/large/matthew.png" />
+                <Card.Content>
+                  <Card.Header>Theo</Card.Header>
+                  <Card.Meta>
+                    <span className="date">Joined in 2015</span>
+                  </Card.Meta>
+                  <Card.Description>
+                    Matthew is a musician living in Nashville.
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <p>
+                    <Icon name="user" />
+                    22 Friends
+                  </p>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid>
+          <Divider vertical>&</Divider>
+        </Segment>
+
+        <Container textAlign="center">
+
+        <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+        Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+        pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
+        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
+        ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+        nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+        augue. Curabitur ullamcorper ultricies nisi.
+      </p>
+
+          <Accordion>
+            <Accordion.Title
+              active={activeIndex === 0}
+              index={0}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 0}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 1}
+              index={1}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 2}
+              index={2}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <p>Answer</p>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 3}
+              index={3}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 3}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 4}
+              index={4}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 4}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 5}
+              index={5}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 5}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 6}
+              index={6}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 6}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 7}
+              index={7}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 7}>
+              <p>Answer</p>
+            </Accordion.Content>
+
+            <Accordion.Title
+              active={activeIndex === 8}
+              index={8}
+              onClick={this.handleClick}
+            >
+              <Icon name="dropdown" />
+              Question
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 8}>
+              <p>Answer</p>
+            </Accordion.Content>
+          </Accordion>
+        </Container>
+      </div>
+    );
+  }
+}
+
+export default About;
