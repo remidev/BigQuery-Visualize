@@ -12,7 +12,7 @@ const path = "";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
 // Query Function
-async function query() {
+const query = async function() {
   // SQL Query String
   const sqlQuery = `
   SELECT
@@ -41,10 +41,11 @@ async function query() {
   // Log response data
   console.log("Query Results:");
   console.log(rows);
-}
+};
 
 // Query function call
-query().catch(console.error);
+// query().catch(console.error);
+module.exports = query;
 
 // Resources
 //===================================================================================
