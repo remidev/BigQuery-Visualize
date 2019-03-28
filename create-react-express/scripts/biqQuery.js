@@ -45,6 +45,7 @@ const query = async function() {
 
 // Query function call
 // query().catch(console.error);
+
 module.exports = query;
 
 // Resources
