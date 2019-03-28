@@ -23,7 +23,7 @@ const Home = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Abtract Data Analytics"
+      content="Abstract Data Analytics"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
