@@ -3,17 +3,29 @@ import "semantic-ui-css/semantic.min.css";
 import { PieChart, Pie, Cell } from "recharts";
 //Sector
 
-const data = [
-  // { name: "Group A", value: 400 },
-  // { name: "Group B", value: 300 },
-  // { name: "Group C", value: 300 },
-  // { name: "Group D", value: 200 }
-];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+class PieChartN extends React.Component {
 
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state={
+     data: [],
+    }
+  }
+  
+  componentDidMount(){
+    this.setState({
+      data: this.props.chart
+    })
+    console.log(this.props)
+  }
+
+  COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  RADIAN = Math.PI / 180;
+  
+  renderCustomizedLabel = ({
   cx,
   cy,
   midAngle,
@@ -23,15 +35,15 @@ const renderCustomizedLabel = ({
   index
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  const dx = cx + radius * Math.cos(-midAngle * this.RADIAN);
+  const dy = cy + radius * Math.sin(-midAngle * this.RADIAN);
 
   return (
     <text
-      x={x}
-      y={y}
+      dx={dx}
+      dy={dy}
       fill="white"
-      textAnchor={x > cx ? "start" : "end"}
+      textAnchor={dx > cx ? "start" : "end"}
       dominantBaseline="central"
     >
       {`${(percent * 100).toFixed(0)}%`}
@@ -39,31 +51,21 @@ const renderCustomizedLabel = ({
   );
 };
 
-class PieChartN extends React.Component {
-
-  constructor(props) {
-    super(props);
-    console.log(props);
-    this.state={
-     data: data,
-    }
-    console.log(data);
-  }
-  
   render() {
     return (
       <PieChart width={600} height={300} onMouseEnter={this.onPieEnter}>
         <Pie
-          data={data}
+          data={this.state.data}
+          dataKey="x"
           cx={300}
           cy={200}
           labelLine={false}
-          label={renderCustomizedLabel}
+          label={this.renderCustomizedLabel}
           outerRadius={80}
           fill="#8884d8"
         >
-          {data.map((entry, index) => (
-            <Cell fill={COLORS[index % COLORS.length]} />
+          {this.state.data.map((entry, index) => (
+            <Cell fill={this.COLORS[index % this.COLORS.length]} />
           ))}
         </Pie>
       </PieChart>

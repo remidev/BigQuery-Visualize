@@ -8,21 +8,20 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ReferenceArea,
+  ReferenceArea
   // Brush
 } from "recharts";
 
 const data = [
-  
-  // { name: 12, cost: 4.41, impression: 300 },
-  // { name: 13, cost: 2.1, impression: 50 },
-  // { name: 14, cost: 8, impression: 190 },
-  // { name: 15, cost: 0, impression: 300 },
-  // { name: 16, cost: 9, impression: 400 },
-  // { name: 17, cost: 3, impression: 200 },
-  // { name: 18, cost: 2, impression: 50 },
-  // { name: 19, cost: 3, impression: 100 },
-  // { name: 20, cost: 7, impression: 100 }
+  // { name: 12, x: 4.41, y: 300 },
+  // { name: 13, x: 2.1, y: 50 },
+  // { name: 14, x: 8, y: 190 },
+  // { name: 15, x: 0, y: 300 },
+  // { name: 16, x: 9, y: 400 },
+  // { name: 17, x: 3, y: 200 },
+  // { name: 18, x: 2, y: 50 },
+  // { name: 19, x: 3, y: 100 },
+  // { name: 20, x: 7, y: 100 }
 ];
 
 const getAxisYDomain = (from, to, ref, offset) => {
@@ -37,7 +36,6 @@ const getAxisYDomain = (from, to, ref, offset) => {
 };
 
 const initialState = {
-  data,
   left: "dataMin",
   right: "dataMax",
   refAreaLeft: "",
@@ -50,17 +48,23 @@ const initialState = {
 };
 
 class ZoomChart extends React.Component {
-
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: data,
-     state: initialState
-    }
-    console.log(data);
+    this.state = {
+      data: [],
+      state: initialState
+    };
+    // console.log(data);
   }
-  //heck yeah
+
+  componentDidMount(){
+    this.setState({
+      data: this.props.chart
+    })
+    // console.log(this.props)
+  }
+
   zoom() {
     let { refAreaLeft, refAreaRight, data } = this.state;
 
@@ -77,11 +81,11 @@ class ZoomChart extends React.Component {
       [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft];
 
     // yAxis domain
-    const [bottom, top] = getAxisYDomain(refAreaLeft, refAreaRight, "cost", 1);
+    const [bottom, top] = getAxisYDomain(refAreaLeft, refAreaRight, "x", 1);
     const [bottom2, top2] = getAxisYDomain(
       refAreaLeft,
       refAreaRight,
-      "impression",
+      "y",
       50
     );
 
@@ -98,6 +102,12 @@ class ZoomChart extends React.Component {
     }));
   }
 
+  // componentDidMount() {
+  //   this.setState(state => {
+  //     return { data: state.data };
+  //   });
+  // }
+
   zoomOut() {
     const { data } = this.state;
     this.setState(() => ({
@@ -108,7 +118,7 @@ class ZoomChart extends React.Component {
       right: "dataMax",
       top: "dataMax+1",
       bottom: "dataMin",
-      top2: "dataMax+50",
+      top2: "dataMax+50"
       // bottom: "dataMin+50"
     }));
   }
@@ -130,7 +140,7 @@ class ZoomChart extends React.Component {
     return (
       <div className="highlight-bar-charts text-center">
         <a
-          href="javascript:void(0)"//Need this line
+          href="javascript:void(0)" //Need this line
           className="btn update"
           onClick={this.zoomOut.bind(this)}
         >
@@ -140,7 +150,7 @@ class ZoomChart extends React.Component {
         <LineChart
           width={600}
           height={300}
-          data={data}
+          data={this.state.data}
           onMouseDown={e => this.setState({ refAreaLeft: e.activeLabel })}
           onMouseMove={e =>
             this.state.refAreaLeft &&
@@ -172,14 +182,14 @@ class ZoomChart extends React.Component {
           <Line
             yAxisId="1"
             type="natural"
-            dataKey="cost"
+            dataKey="x"
             stroke="#8884d8"
             animationDuration={300}
           />
           <Line
             yAxisId="2"
             type="natural"
-            dataKey="impression"
+            dataKey="y"
             stroke="#82ca9d"
             animationDuration={300}
           />
