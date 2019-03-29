@@ -24,112 +24,165 @@ import RadarChartN from "../../Graphs/RadarChart/RadarChart";
 // import ScatterPlotColor from "../../Graphs/d3ScatterPlot/d3ScatterPlot";
 
 const GalleryData = {
-  SimpleLineChart: {
+  LineChart: { //WORKS
     id:1,
-    chart: <SimpleLineChart />,
+    data: [],
+    chart() {
+      return <SimpleLineChart chart={this.data} />
+    },
     type: "LineChart",
-    chartName: "Simple Line Chart"
+    chartName: "Simple Line Chart",
   },
-  BiaxialLineChart: {
+  LineChart: { //WORKS
     id:2,
-    chart: <BiaxialLineChart />,
-    type: "BarChart",
+    data: [],
+    chart() {
+      return <BiaxialLineChart chart={this.data} />
+    },
+    type: "LineChart",
     chartName: "Biaxial Bar Chart"
   },
-  LineChartWithReference: {
+  LineChart: { //WORKS
     id:3,
-    chart: <LineChartWithReference />,
+    data: [],
+    chart() {
+      return <LineChartWithReference chart={this.data} />
+    },
     type: "LineChart",
     chartName: "Line Chart With Reference"
   },
-  ComboCharts: {
+  Mixed: { //WORKS
     id:4,
-    chart: <ComboCharts />,
+    data: [],
+    chart() {
+      return <ComboCharts chart={this.data} />
+    },
     type: "Mixed",
     chartName: "Combo Chart"
   },
-  ZoomChart: {
+  LineChart: { //DOES NOT WORK
     id:5,
-    chart: <ZoomChart />,
+    data: [],
+    chart() {
+      return <ZoomChart chart={this.data} />
+    },
     type: "LineChart",
     chartName: "Zoom Line Chart"
   },
-  OverlayAreaChart: {
+  AreaChart: { // WORKS
     id:6,
-    chart: <OverlayAreaChart />,
+    data: [],
+    chart() {
+      return <OverlayAreaChart chart={this.data} />
+    },
     type: "AreaChart",
     chartName: "Overlay Area Chart"
   },
-  PercentChart: {
+  AreaChart: { // WORKS
     id:7,
-    chart: <PercentChart />,
+    data: [],
+    chart() {
+      return <PercentChart chart={this.data} />
+    },
     type: "AreaChart",
     chartName: "Percent Chart"
   },
-
-  CanNegativeChart: {
+   LineChart: { //WORKS
     id:8,
-    chart: <CanNegativeChart />,
+    data: [],
+    chart() {
+      return <CanNegativeChart chart={this.data} />
+    },
     type: "LineChart",
     chartName: "Line Chart (Negatives)"
   },
-  BarChartN:{
+  BarChart:{ //WORKS
     id:9,
-    chart: <BarChartN/>,
+    data: [],
+    chart() {
+      return <BarChartN chart={this.data} />
+    },
     type: "BarChart",
     chartName: "Simple Bar Chart",
   },
-  BarChartStacked: {
+  BarChart:{ //WORKS
     id:10,
-    chart: <BarChartStacked/>,
+    data: [],
+    chart() {
+      return <BarChartStacked chart={this.data} />
+    },
     type: "BarChart",
     chartName: "Bar Chart Stacked",
   },
-  BarChartMixed: {
+  BarChart: { //WORKS
     id:11,
-    chart: <BarChartMixed/>,
+    data:[],
+    chart() {
+      return  <BarChartMixed chart={this.data} />
+    },
     type: "BarChart",
     chartName: "Bar Chart Mixed",
   },
-  CanNegativeBarChart: {
+   BarChart: { //WORKS
     id:12,
-    chart: <CanNegativeBarChart/>,
+    data: [],
+    chart() {
+      return <CanNegativeBarChart chart={this.data} />
+    },
     type: "BarChart",
     chartName: "Bar Chart (Negatives)",
   },
-  BiaxialBarChart: {
+  BarChart: { //WORKS 
     id:13,
-    chart: <BiaxialBarChart/>,
+    data: [],
+    chart() {
+      return <BiaxialBarChart chart={this.data} />
+    },
     type: "BarChart",
     chartName: "Biaxial Bar Chart",
   },
-  ComposedDataChart: {
+  DataChart: { // WORKS
     id:14,
-    chart: <ComposedDataChart/>,
+    data: [],
+    chart() {
+      return <ComposedDataChart chart={this.data} />
+    },
     type: "DataChart",
     chartName: "Composed Data Chart",
   },
-  ComposedLineBarChart: {
+  Mixed: { // WORKS
     id:15,
-    chart: <ComposedLineBarChart/>,
+    data: [],
+    chart() {
+      return <ComposedLineBarChart chart={this.data} />
+    },
     type: "Mixed",
     chartName: "Composed Line Bar Chart(H)",
   },
-  ComposedVerticalLineBarChart: {
+  Mixed: {
     id:16,
-    chart:<ComposedVerticalLineBarChart/>,
+    data: [],
+    chart() {
+      return <ComposedVerticalLineBarChart chart={this.data} />
+    },
     type: "Mixed",
     chartName: "Composed Line Bar Chart(V)",
   },
-  PieChartN:{
+  PieChart:{ //WORKS
     id:17,
-    chart: <PieChartN/>,
+    data: [],
+    chart() {
+      return <PieChartN chart={this.data} />
+    },
     type: "PieChart",
     chartName: "Simple Pie Chart",
   },
-  ScatterChartN: {
+  ScatterChart: { //WORKS
     id:18,
-    chart: <ScatterChartN/>,
+    data: [],
+    chart() {
+      return <ScatterChartN chart={this.data} />
+    },
     type: "ScatterChart",
     chartName: "Simple Scatter Chart",
   },
@@ -139,23 +192,32 @@ const GalleryData = {
   //   type: "Scatter Chart",
   //   chartName: "Scatter Chart Color Coded",
   // },
-  ScatterChartLabels: {
+  ScatterChart: { //WORKS
     id:20,
-    chart: <ScatterChartLabels/>,
+    data: [],
+    chart() {
+      return <ScatterChartLabels chart={this.data} />
+    },
     type: "ScatterChart",
     chartName: "Scatter Chart Labeled",
   },
-  ScatterChartMultiY: {
+  ScatterChart: { //WORKS
     id:21,
-    chart: <ScatterChartMultiY/>,
+    data: [],
+    chart() {
+      return <ScatterChartMultiY chart={this.data} />
+    },
     type: "ScatterChart",
     chartName: "Scatter Chart (Multiple)",
   },
-  RadarChartN: {
-    id:22,
-    chart: <RadarChartN />,
-    type: "RadarChart",
-    chartName: "Radar Chart"
-  },
+  // RadarChart: {
+  //   id:22,
+  //   data: [],
+  //   chart() {
+  //     return <RadarChartN chart={this.data} />
+  //   },
+  //   type: "RadarChart",
+  //   chartName: "Radar Chart"
+  // },
 };
 export default GalleryData;

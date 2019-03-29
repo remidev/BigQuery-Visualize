@@ -10,39 +10,22 @@ import {
   Tooltip,
   // Legend
 } from "recharts";
-const data01 = [
-  // { x: 100, y: 200, z: 200 },
-  // { x: 120, y: 100, z: 260 },
-  // { x: 170, y: 300, z: 400 },
-  // { x: 140, y: 250, z: 280 },
-  // { x: 150, y: 400, z: 500 },
-  // { x: 110, y: 280, z: 200 }
-];
-const data02 = [
-  // { x: 300, y: 300, z: 200 },
-  // { x: 400, y: 500, z: 260 },
-  // { x: 200, y: 700, z: 400 },
-  // { x: 340, y: 350, z: 280 },
-  // { x: 560, y: 500, z: 500 },
-  // { x: 230, y: 780, z: 200 },
-  // { x: 500, y: 400, z: 200 },
-  // { x: 300, y: 500, z: 260 },
-  // { x: 240, y: 300, z: 400 },
-  // { x: 320, y: 550, z: 280 },
-  // { x: 500, y: 400, z: 500 },
-  // { x: 420, y: 280, z: 200 }
-];
 
 class ScatterChartMultiY extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
     this.state = {
-      data01: data01,
-      data02: data02
+      data01: [],
+      data02: [],
     };
-    console.log(data01);
-    console.log(data02);
+  }
+
+  componentDidMount(){
+    this.setState({
+      data: this.props.chart
+    })
+    // console.log(this.props)
   }
 
   render() {
@@ -72,8 +55,9 @@ class ScatterChartMultiY extends React.Component {
           stroke="#82ca9d"
         />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-        <Scatter yAxisId="left" name="A school" data={data01} fill="#8884d8" />
-        <Scatter yAxisId="right" name="A school" data={data02} fill="#82ca9d" />
+        <Scatter yAxisId="left" name="A school" data={this.state.data} fill="#8884d8" />
+        <Scatter yAxisId="right" name="A school" data={this.state.data1} fill="#82ca9d" />
+        {/* More Data Data1 */}
       </ScatterChart>
     );
   }
