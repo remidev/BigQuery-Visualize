@@ -37,3 +37,9 @@ app.listen(PORT, function() {
   );
 });
 //========================================================================
+
+// const query = require("./scripts/biqQuery");
+
+// query().then(function(res) {
+//   console.log(res);
+// });
