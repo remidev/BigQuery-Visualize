@@ -16,37 +16,13 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       filter: [],
-<<<<<<< HEAD
-      data: [
-        { name: "Page A", x: 4000, y: 2400, z: 2400 },
-        { name: "Page B", x: 3000, y: 1398, z: 2210 },
-        { name: "Page C", x: -1000, y: 9800, z: 2290 },
-        { name: "Page D", x: 500, y: 3908, z: 2000 },
-        { name: "Page E", x: -2000, y: 4800, z: 2181 },
-        { name: "Page F", x: -250, y: 3800, z: 2500 },
-        { name: "Page G", x: 3490, y: 4300, z: 2100 }
-      ]
-=======
       data: []
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     axios.get("/api/all").then(res => {
-<<<<<<< HEAD
-      console.log(res);
-      console.log("hwllo");
-    });
-  }
-
-  //Create a Submit Button
-  // axios.post("/api/give").then({
-  //
-  // })
-
-=======
       console.log(res.data[0]);
       this.setState({
         data: res.data[0]
@@ -54,7 +30,6 @@ class Gallery extends React.Component {
     });
   }
 
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
   }
@@ -149,12 +124,6 @@ class Gallery extends React.Component {
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
             <div className="column">
-<<<<<<< HEAD
-              <p />
-              <p />
-              <p />
-              <p />
-=======
               <p>
                 <select id="Source" class="ui dropdown">
                   <option value="">Source</option>
@@ -196,7 +165,6 @@ class Gallery extends React.Component {
               >
                 Submit
               </button>
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
             </div>
             <div className="column">
               <div>

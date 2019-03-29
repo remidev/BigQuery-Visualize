@@ -29,9 +29,6 @@ const GalleryData = {
     id: 1,
     data: [],
     chart() {
-<<<<<<< HEAD
-      return <SimpleLineChart chart={this.data} />;
-=======
       return (
       <div>
       <div> <h1 className="text-center">Simple Line Chart</h1><SimpleLineChart chart={this.data}/></div><hr></hr> 
@@ -40,208 +37,10 @@ const GalleryData = {
       <div> <h1 className="text-center">Biaxial Line Chart</h1> <BiaxialLineChart chart={this.data} /></div><hr></hr> */}
       </div>
        )
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
     },
     type: "LineChart",
     chartName: "Simple Line Chart"
   },
-<<<<<<< HEAD
-  LineChart: {
-    //WORKS
-    id: 2,
-    data: [],
-    chart() {
-      return <BiaxialLineChart chart={this.data} />;
-    },
-    type: "LineChart",
-    chartName: "Biaxial Bar Chart"
-  },
-  LineChart: {
-    //WORKS
-    id: 3,
-    data: [],
-    chart() {
-      return <LineChartWithReference chart={this.data} />;
-    },
-    type: "LineChart",
-    chartName: "Line Chart With Reference"
-  },
-  Mixed: {
-    //WORKS
-    id: 4,
-    data: [],
-    chart() {
-      return <ComboCharts chart={this.data} />;
-    },
-    type: "Mixed",
-    chartName: "Combo Chart"
-  },
-  LineChart: {
-    //DOES NOT WORK
-    id: 5,
-    data: [],
-    chart() {
-      return <ZoomChart chart={this.data} />;
-    },
-    type: "LineChart",
-    chartName: "Zoom Line Chart"
-  },
-  AreaChart: {
-    // WORKS
-    id: 6,
-    data: [],
-    chart() {
-      return <OverlayAreaChart chart={this.data} />;
-    },
-    type: "AreaChart",
-    chartName: "Overlay Area Chart"
-  },
-  AreaChart: {
-    // WORKS
-    id: 7,
-    data: [],
-    chart() {
-      return <PercentChart chart={this.data} />;
-    },
-    type: "AreaChart",
-    chartName: "Percent Chart"
-  },
-  LineChart: {
-    //WORKS
-    id: 8,
-    data: [],
-    chart() {
-      return <CanNegativeChart chart={this.data} />;
-    },
-    type: "LineChart",
-    chartName: "Line Chart (Negatives)"
-  },
-  BarChart: {
-    //WORKS
-    id: 9,
-    data: [],
-    chart() {
-      return <BarChartN chart={this.data} />;
-    },
-    type: "BarChart",
-    chartName: "Simple Bar Chart"
-  },
-  BarChart: {
-    //WORKS
-    id: 10,
-    data: [],
-    chart() {
-      return <BarChartStacked chart={this.data} />;
-    },
-    type: "BarChart",
-    chartName: "Bar Chart Stacked"
-  },
-  BarChart: {
-    //WORKS
-    id: 11,
-    data: [],
-    chart() {
-      return <BarChartMixed chart={this.data} />;
-    },
-    type: "BarChart",
-    chartName: "Bar Chart Mixed"
-  },
-  BarChart: {
-    //WORKS
-    id: 12,
-    data: [],
-    chart() {
-      return <CanNegativeBarChart chart={this.data} />;
-    },
-    type: "BarChart",
-    chartName: "Bar Chart (Negatives)"
-  },
-  BarChart: {
-    //WORKS
-    id: 13,
-    data: [],
-    chart() {
-      return <BiaxialBarChart chart={this.data} />;
-    },
-    type: "BarChart",
-    chartName: "Biaxial Bar Chart"
-  },
-  DataChart: {
-    // WORKS
-    id: 14,
-    data: [],
-    chart() {
-      return <ComposedDataChart chart={this.data} />;
-    },
-    type: "DataChart",
-    chartName: "Composed Data Chart"
-  },
-  Mixed: {
-    // WORKS
-    id: 15,
-    data: [],
-    chart() {
-      return <ComposedLineBarChart chart={this.data} />;
-    },
-    type: "Mixed",
-    chartName: "Composed Line Bar Chart(H)"
-  },
-  Mixed: {
-    id: 16,
-    data: [],
-    chart() {
-      return <ComposedVerticalLineBarChart chart={this.data} />;
-    },
-    type: "Mixed",
-    chartName: "Composed Line Bar Chart(V)"
-  },
-  PieChart: {
-    //WORKS
-    id: 17,
-    data: [],
-    chart() {
-      return <PieChartN chart={this.data} />;
-    },
-    type: "PieChart",
-    chartName: "Simple Pie Chart"
-  },
-  ScatterChart: {
-    //WORKS
-    id: 18,
-    data: [],
-    chart() {
-      return <ScatterChartN chart={this.data} />;
-    },
-    type: "ScatterChart",
-    chartName: "Simple Scatter Chart"
-  },
-  // ScatterPlotColor: {
-  // id:19,
-  //   chart: <ScatterPlotColor/>,
-  //   type: "Scatter Chart",
-  //   chartName: "Scatter Chart Color Coded",
-  // },
-  ScatterChart: {
-    //WORKS
-    id: 20,
-    data: [],
-    chart() {
-      return <ScatterChartLabels chart={this.data} />;
-    },
-    type: "ScatterChart",
-    chartName: "Scatter Chart Labeled"
-  },
-  ScatterChart: {
-    //WORKS
-    id: 21,
-    data: [],
-    chart() {
-      return <ScatterChartMultiY chart={this.data} />;
-    },
-    type: "ScatterChart",
-    chartName: "Scatter Chart (Multiple)"
-  }
-=======
   
   // Mixed: { //WORKS
   //   id:4,
@@ -338,7 +137,6 @@ const GalleryData = {
   // //   type: "Scatter Chart",
   // //   chartName: "Scatter Chart Color Coded",
   // // },
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
   // RadarChart: {
   //   id:22,
   //   data: [],
