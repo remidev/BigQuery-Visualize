@@ -28,8 +28,15 @@ class Gallery extends React.Component {
     axios.get("/api/all").then(res => {
       console.log(res);
       console.log("hwllo");
+      
+
     });
   }
+
+  //Create a Submit Button
+  // axios.post("/api/give").then({
+  // 
+  // })
 
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
