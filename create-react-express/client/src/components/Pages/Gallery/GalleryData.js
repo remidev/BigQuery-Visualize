@@ -24,8 +24,9 @@ import RadarChartN from "../../Graphs/RadarChart/RadarChart";
 // import ScatterPlotColor from "../../Graphs/d3ScatterPlot/d3ScatterPlot";
 
 const GalleryData = {
-  LineChart: { //WORKS
-    id:1,
+  LineChart: {
+    //WORKS
+    id: 1,
     data: [],
     chart() {
       return (
@@ -38,7 +39,7 @@ const GalleryData = {
        )
     },
     type: "LineChart",
-    chartName: "Simple Line Chart",
+    chartName: "Simple Line Chart"
   },
   
   Mixed: { //WORKS
@@ -86,7 +87,7 @@ const GalleryData = {
       )
     },
     type: "BarChart",
-    chartName: "Simple Bar Chart",
+    chartName: "Simple Bar Chart"
   },
   DataChart: { // WORKS
     id:14,
@@ -99,7 +100,7 @@ const GalleryData = {
       )
     },
     type: "DataChart",
-    chartName: "Composed Data Chart",
+    chartName: "Composed Data Chart"
   },
   PieChart:{ //WORKS
     id:17,
@@ -112,10 +113,11 @@ const GalleryData = {
         )
     },
     type: "PieChart",
-    chartName: "Simple Pie Chart",
+    chartName: "Simple Pie Chart"
   },
-  ScatterChart: { //WORKS
-    id:18,
+  ScatterChart: {
+    //WORKS
+    id: 18,
     data: [],
     chart() {
       return (
@@ -127,7 +129,7 @@ const GalleryData = {
       )
     },
     type: "ScatterChart",
-    chartName: "Simple Scatter Chart",
+    chartName: "Simple Scatter Chart"
   },
   // // ScatterPlotColor: {
   //   // id:19,

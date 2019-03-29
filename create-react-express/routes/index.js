@@ -1,13 +1,14 @@
-const path = require("path");
-const router = require("express").Router();
-const apiRoutes = require("./api");
+const query = require("../scripts/biqQuery");
 
-// API Routes
-router.use("/api", apiRoutes);
+// query().then(function(res) {
+//   console.log(res);
+// });
 
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-module.exports = router;
+module.exports = function(app) {
+  app.get("/api/all", function(req, res) {
+    console.log("hello");
+    query().then(function(result) {
+      res.json(result);
+    });
+  });
+};

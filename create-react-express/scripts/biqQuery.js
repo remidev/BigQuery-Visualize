@@ -8,24 +8,20 @@ const { BigQuery } = require("@google-cloud/bigquery");
 const bigquery = new BigQuery();
 
 // Set Credentials
-const path = "";
+const path =
+  "C:/Users/teddy/Downloads/decoded-reducer-234800-f824d46ed564.json";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
 // Query Function
-// take in params for: 
-const query = async function() {
+// take in params for:
+async function query() {
   // SQL Query String
   const sqlQuery = `
   SELECT
-    CONCAT( 'https://stackoverflow.com/questions/', CAST(id AS STRING) ) AS url,
-    view_count,
-    creation_date
+    author,
+    score
   FROM
-    \`bigquery-public-data.stackoverflow.posts_questions\`
-  WHERE
-    tags LIKE '%google-bigquery%'
-  ORDER BY
-    view_count DESC
+  \`fh-bigquery.reddit_comments.2005\`
   LIMIT
     10
   `;
@@ -40,10 +36,12 @@ const query = async function() {
   const [rows] = await bigquery.query(options);
 
   // Log response data
-  console.log("Query Results:");
-  console.log(rows);
-};
+  // console.log("Query Results:");
+  // console.log(rows);
+  return [rows];
+}
 
+module.exports = query;
 // Query function call
 // query().catch(console.error);
 
@@ -56,6 +54,19 @@ const query = async function() {
 // -Uploading Credentials to Heroku
 // --https://medium.com/@naz_islam/how-to-authenticate-google-cloud-services-on-heroku-for-node-js-app-dda9f4eda798
 
-//===================================================================================
+/*  `
+  SELECT
+    CONCAT( 'https://stackoverflow.com/questions/', CAST(id AS STRING) ) AS url,
+    view_count,
+    creation_date
+  FROM
+    \`bigquery-public-data.stackoverflow.posts_questions\`
+  WHERE
+    tags LIKE '%google-bigquery%'
+  ORDER BY
+    view_count DESC
+  LIMIT
+    10
+  `; */
 
-module.exports = query;
+//===================================================================================

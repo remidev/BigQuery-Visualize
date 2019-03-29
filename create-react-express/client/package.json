@@ -6,6 +6,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@google-cloud/bigquery": "^2.1.0",
+    "axios": "^0.18.0",
     "chroma-js": "^2.0.3",
     "d3": "^5.9.2",
     "lodash": "^4.17.11",
