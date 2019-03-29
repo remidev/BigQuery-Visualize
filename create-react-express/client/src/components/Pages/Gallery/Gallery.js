@@ -24,6 +24,13 @@ class Gallery extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    axios.get("/api/all").then(res => {
+      console.log(res);
+      console.log("hwllo");
+    });
+  }
+
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
   }
@@ -78,13 +85,12 @@ class Gallery extends React.Component {
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
             <div className="column">
-             
               <p>
-              <select id="Source" class="ui dropdown">
-                <option value="">Source</option>
-                <option value="0">Reddit</option>
-                <option value="1">Stacks Overflow</option>
-              </select>
+                <select id="Source" class="ui dropdown">
+                  <option value="">Source</option>
+                  <option value="0">Reddit</option>
+                  <option value="1">Stacks Overflow</option>
+                </select>
               </p>
 
               <p>
@@ -99,7 +105,7 @@ class Gallery extends React.Component {
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
-            
+
               <p>
                 <select id="Field2" class="ui dropdown">
                   <option value="">Content</option>
@@ -112,7 +118,6 @@ class Gallery extends React.Component {
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
-
             </div>
             <div className="column">
               <div>

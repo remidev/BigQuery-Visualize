@@ -1,14 +1,13 @@
+const router = require("express").Router();
 const query = require("../scripts/biqQuery");
 
-// query().then(function(res) {
-//   console.log(res);
-// });
+router.get("/api/all", function(req, res) {
+  console.log("hello");
+  var x = "Hello";
+  // query().then(function(result) {
+  //   res.json(result);
+  // });
+  res.json({ value: x });
+});
 
-module.exports = function(app) {
-  app.get("/api/all", function(req, res) {
-    console.log("hello");
-    query().then(function(result) {
-      res.json(result);
-    });
-  });
-};
+module.exports = router;
