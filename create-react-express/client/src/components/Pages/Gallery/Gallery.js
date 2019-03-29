@@ -3,6 +3,7 @@ import React from "react";
 import GalleryFile from "../../GalleryFile/GalleryFile";
 import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
+import axios from "axios";
 
 const styles = {
   marginLeft: "auto",

@@ -7,6 +7,7 @@
 //========================================================================
 const express = require("express");
 const routes = require("./routes");
+const axios = require("axios");
 //========================================================================
 
 // Instantiate Express App
@@ -16,7 +17,7 @@ const app = express();
 
 // Configure Port For Local/Heroku
 //========================================================================
-const PORT = process.env.PORT || process.argv[2] || 8080;
+const PORT = process.env.PORT || process.argv[2] || 3000;
 //========================================================================
 
 // Middleware
@@ -38,8 +39,14 @@ app.listen(PORT, function() {
 });
 //========================================================================
 
-// const query = require("./scripts/biqQuery");
+//const query = require("./scripts/biqQuery");
 
 // query().then(function(res) {
 //   console.log(res);
 // });
+
+app.get("/api/all", function(data) {
+  console.log("hello 2");
+  response = data;
+  console.log(response);
+});
