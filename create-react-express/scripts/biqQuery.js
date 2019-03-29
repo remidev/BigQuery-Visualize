@@ -12,8 +12,28 @@ const path =
   "C:/Users/teddy/Downloads/decoded-reducer-234800-f824d46ed564.json";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
+//example url: localhost:3030/api/reddit/comments/score&created_utc
+
 // Query Function
 // take in params for:
+// SELECT [[x][y][z]]
+// FROM \`[project-id].[dataset].[table]\`
+// WHERE [] [operator] []
+
+// dummy input
+projectId = "fh-bigquery";
+datasetId = "reddit_comments";
+tableId = "2005";
+colNames = ["score", "ups", "downs"];
+
+function buildQueryURL(projectId, datasetID, tableID, colNames) {
+  const tilde = "`";
+  const tildeEsc = "`";
+  const emptyQuery = ``;
+  const select = "SELECT";
+  const columnNames = ["", ""];
+}
+
 async function query() {
   // SQL Query String
   const sqlQuery = `
