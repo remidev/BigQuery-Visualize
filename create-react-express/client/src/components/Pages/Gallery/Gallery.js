@@ -16,6 +16,7 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       filter: [],
+<<<<<<< HEAD
       data: [
         { name: "Page A", x: 4000, y: 2400, z: 2400 },
         { name: "Page B", x: 3000, y: 1398, z: 2210 },
@@ -25,11 +26,16 @@ class Gallery extends React.Component {
         { name: "Page F", x: -250, y: 3800, z: 2500 },
         { name: "Page G", x: 3490, y: 4300, z: 2100 }
       ]
+=======
+      data: []
+>>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     axios.get("/api/all").then(res => {
+<<<<<<< HEAD
       console.log(res);
       console.log("hwllo");
     });
@@ -40,8 +46,55 @@ class Gallery extends React.Component {
   //
   // })
 
+=======
+      console.log(res.data[0]);
+      this.setState({
+        data: res.data[0]
+      });
+    });
+  }
+
+>>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log("Hello");
+
+    var Source = document.getElementById("Source");
+    var SelectedSource = Source.options[Source.selectedIndex].value;
+    //This Above is the SOURCE VALUE;
+
+    var Content1 = document.getElementById("Field1");
+    var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
+    //This Above is the Content1 VALUE;
+
+    var Content2 = document.getElementById("Field2");
+    var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
+    //This Above is the Content2 VALUE;
+
+    console.log(SelectedContent1, SelectedContent2, SelectedSource);
+
+    if (
+      SelectedContent1 === "" ||
+      SelectedContent2 === "" ||
+      SelectedSource === ""
+    ) {
+      return null;
+      //Please Select Input Fields;
+    }
+
+    var queryInfo = {
+     Source: SelectedSource,
+     Content1: SelectedContent1,
+     Content2 : SelectedContent2,
+    };
+
+    axios.post("/api/give", queryInfo).then(function() {
+      console.log("Info Given to Backend");
+    });
   }
 
   handleChange(e) {
@@ -96,10 +149,54 @@ class Gallery extends React.Component {
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
             <div className="column">
+<<<<<<< HEAD
               <p />
               <p />
               <p />
               <p />
+=======
+              <p>
+                <select id="Source" class="ui dropdown">
+                  <option value="">Source</option>
+                  <option value="Reddit">Reddit</option>
+                  <option value="StacksOverflow">Stacks Overflow</option>
+                </select>
+              </p>
+
+              <p>
+                <select id="Field1" class="ui dropdown">
+                  <option value="">Content</option>
+                  <option value="subreddit">Subreddit</option>
+                  <option value="author">Author</option>
+                  <option value="ups">Ups</option>
+                  <option value="downs">Downs</option>
+                  <option value="score">Score</option>
+                  <option value="body">Body</option>
+                  <option value="created_utc">Time Created</option>
+                </select>
+              </p>
+
+              <p>
+                <select id="Field2" class="ui dropdown">
+                  <option value="">Content</option>
+                  <option value="subreddit">Subreddit</option>
+                  <option value="author">Author</option>
+                  <option value="ups">Ups</option>
+                  <option value="downs">Downs</option>
+                  <option value="score">Score</option>
+                  <option value="body">Body</option>
+                  <option value="created_utc">Time Created</option>
+                </select>
+              </p>
+
+              <button
+                onClick={this.handleSubmit}
+                class="ui button"
+                type="submit"
+              >
+                Submit
+              </button>
+>>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
             </div>
             <div className="column">
               <div>

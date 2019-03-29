@@ -11,19 +11,20 @@ import {
 } from "recharts";
 
 class CanNegativeChart extends React.Component {
-
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-    }
+    this.state = {
+      data: [],
+      dataKeyX: "",
+      // dataKeyY: ""
+    };
   }
-  
-    gradientOffset = () => {
+
+  gradientOffset = () => {
     const dataMax = Math.max(...this.state.data.map(i => i.x));
     const dataMin = Math.min(...this.state.data.map(i => i.x));
-  
+
     if (dataMax <= 0) {
       return 0;
     } else if (dataMin >= 0) {
@@ -33,11 +34,25 @@ class CanNegativeChart extends React.Component {
     }
   };
 
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var TempDataKeyX = Object.keys(val)[0];
+        var TempDataKeyY = Object.keys(val)[1];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    // if (!TempDataKeyY) TempDataKeyY = "";
+
+    console.log(TempDataKeyX);
+    // console.log(TempDataKeyY);
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      dataKeyX: TempDataKeyX,
+      // dataKeyY: TempDataKeyY
+    });
   }
 
   render() {
@@ -54,13 +69,21 @@ class CanNegativeChart extends React.Component {
         <Tooltip />
         <defs>
           <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset={this.gradientOffset()} stopColor="green" stopOpacity={1} />
-            <stop offset={this.gradientOffset()} stopColor="red" stopOpacity={1} />
+            <stop
+              offset={this.gradientOffset()}
+              stopColor="green"
+              stopOpacity={1}
+            />
+            <stop
+              offset={this.gradientOffset()}
+              stopColor="red"
+              stopOpacity={1}
+            />
           </linearGradient>
         </defs>
         <Area
           type="monotone"
-          dataKey="x"
+          dataKey={this.state.dataKeyX}
           stroke="#000"
           fill="url(#splitColor)"
         />
