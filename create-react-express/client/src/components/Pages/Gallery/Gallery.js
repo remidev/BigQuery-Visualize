@@ -29,6 +29,23 @@ class Gallery extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+    axios.get("/api/all").then(res => {
+      console.log(res);
+      console.log("hwllo");
+      
+
+    });
+  }
+
+  //Create a Submit Button
+  // axios.post("/api/give").then({
+  // 
+  // })
+
+>>>>>>> 2aee7d9f2feb1cb5669a0d94c5f6ac7cf7497cec
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
   }
