@@ -4,7 +4,7 @@ import GalleryFile from "../../GalleryFile/GalleryFile";
 import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
 
-const styles = {
+const stylesForTools = {
   marginLeft: "auto",
   marginRight: "auto",
   width: "50%"
@@ -17,12 +17,7 @@ class Gallery extends React.Component {
       filter: [],
       data: [
         { name: "Page A", x: 4000, y: 2400, z: 2400 },
-        { name: "Page B", x: 3000, y: 1398, z: 2210 },
-        { name: "Page C", x: -1000, y: 9800, z: 2290 },
-        { name: "Page D", x: 500, y: 3908, z: 2000 },
-        { name: "Page E", x: -2000, y: 4800, z: 2181 },
-        { name: "Page F", x: -250, y: 3800, z: 2500 },
-        { name: "Page G", x: 3490, y: 4300, z: 2100 }
+        { name: "Page B", x: 3000, y: 1398, z: 2210 }
       ]
     };
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +30,7 @@ class Gallery extends React.Component {
   handleChange(e) {
     // console.log(e.target);
     this.updateGalleryData(e.target.name, this.state.data);
-
+    console.log(e.target.name);
     //Array Checker for Filter
     if (e.target.checked && this.state.filter.indexOf(e.target.name) === -1) {
       var currentState = this.state.filter;
@@ -59,9 +54,7 @@ class Gallery extends React.Component {
       });
     }
   }
-  // componentDidMount(){
 
-  // }
   render() {
     // Filter Method
     var GraphComponent = _.map(GalleryData, (value, key) => {
@@ -84,10 +77,41 @@ class Gallery extends React.Component {
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
             <div className="column">
-              <p />
-              <p />
-              <p />
-              <p />
+             
+              <p>
+              <select id="Source" class="ui dropdown">
+                <option value="">Source</option>
+                <option value="0">Reddit</option>
+                <option value="1">Stacks Overflow</option>
+              </select>
+              </p>
+
+              <p>
+                <select id="Field1" class="ui dropdown">
+                  <option value="">Content</option>
+                  <option value="subreddit">Subreddit</option>
+                  <option value="author">Author</option>
+                  <option value="ups">Ups</option>
+                  <option value="downs">Downs</option>
+                  <option value="score">Score</option>
+                  <option value="body">Body</option>
+                  <option value="created_utc">Time Created</option>
+                </select>
+              </p>
+            
+              <p>
+                <select id="Field2" class="ui dropdown">
+                  <option value="">Content</option>
+                  <option value="subreddit">Subreddit</option>
+                  <option value="author">Author</option>
+                  <option value="ups">Ups</option>
+                  <option value="downs">Downs</option>
+                  <option value="score">Score</option>
+                  <option value="body">Body</option>
+                  <option value="created_utc">Time Created</option>
+                </select>
+              </p>
+
             </div>
             <div className="column">
               <div>
@@ -95,7 +119,7 @@ class Gallery extends React.Component {
                 <hr />
                 {unique.map((checkers, i) => {
                   return (
-                    <label style={styles}>
+                    <label style={stylesForTools}>
                       <input
                         type="checkbox"
                         key={i}
