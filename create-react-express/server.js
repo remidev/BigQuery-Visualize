@@ -7,7 +7,6 @@
 //========================================================================
 const express = require("express");
 const routes = require("./routes");
-const axios = require("axios");
 //========================================================================
 
 // Instantiate Express App
@@ -17,7 +16,7 @@ const app = express();
 
 // Configure Port For Local/Heroku
 //========================================================================
-const PORT = process.env.PORT || process.argv[2] || 3000;
+const PORT = process.env.PORT || 3000;
 //========================================================================
 
 // Middleware
