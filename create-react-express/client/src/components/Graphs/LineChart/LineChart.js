@@ -8,29 +8,46 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Brush,
+  Brush
 } from "recharts";
 
 class SimpleLineChart extends React.Component {
-
   constructor(props) {
     super(props);
-    console.log(props);
-    this.state={
-     data: [],
-     width: 600,
-     height: 300,
-    }
+    // console.log(props);
+    this.state = {
+      data: [],
+      width: 600,
+      height: 300,
+      dataKeyX: "",
+      dataKeyY: ""
+    };
   }
-  componentDidMount(){
+
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var TempDataKeyX = Object.keys(val)[0];
+        var TempDataKeyY = Object.keys(val)[1];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
   }
 
   render() {
-    console.log(this.props);
     return (
       <LineChart
         width={this.state.width}
@@ -45,12 +62,12 @@ class SimpleLineChart extends React.Component {
         <Legend />
         <Line
           type="monotone"
-          dataKey="x"
+          dataKey={this.state.dataKeyX}
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
-        <Line type="monotone" dataKey="y" stroke="#82ca9d" />
-        <Brush /> 
+        <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#82ca9d" />
+        <Brush />
       </LineChart>
     );
   }

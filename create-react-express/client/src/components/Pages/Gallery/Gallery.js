@@ -16,30 +16,61 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       filter: [],
-      data: [
-        { name: "Page A", x: 4000, y: 2400, z: 2400 },
-        { name: "Page B", x: 3000, y: 1398, z: 2210 }
-      ]
+      data: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/all").then(res => {
-      console.log(res);
-      console.log("hwllo");
-      
-
+      console.log(res.data[0]);
+      this.setState({
+        data: res.data[0]
+      });
     });
   }
 
-  //Create a Submit Button
-  // axios.post("/api/give").then({
-  // 
-  // })
-
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log("Hello");
+
+    var Source = document.getElementById("Source");
+    var SelectedSource = Source.options[Source.selectedIndex].value;
+    //This Above is the SOURCE VALUE;
+
+    var Content1 = document.getElementById("Field1");
+    var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
+    //This Above is the Content1 VALUE;
+
+    var Content2 = document.getElementById("Field2");
+    var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
+    //This Above is the Content2 VALUE;
+
+    console.log(SelectedContent1, SelectedContent2, SelectedSource);
+
+    if (
+      SelectedContent1 === "" ||
+      SelectedContent2 === "" ||
+      SelectedSource === ""
+    ) {
+      return null;
+      //Please Select Input Fields;
+    }
+
+    var queryInfo = {
+     Source: SelectedSource,
+     Content1: SelectedContent1,
+     Content2 : SelectedContent2,
+    };
+
+    axios.post("/api/give", queryInfo).then(function() {
+      console.log("Info Given to Backend");
+    });
   }
 
   handleChange(e) {
@@ -95,8 +126,8 @@ class Gallery extends React.Component {
               <p>
                 <select id="Source" class="ui dropdown">
                   <option value="">Source</option>
-                  <option value="0">Reddit</option>
-                  <option value="1">Stacks Overflow</option>
+                  <option value="Reddit">Reddit</option>
+                  <option value="StacksOverflow">Stacks Overflow</option>
                 </select>
               </p>
 
@@ -125,6 +156,14 @@ class Gallery extends React.Component {
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
+
+              <button
+                onClick={this.handleSubmit}
+                class="ui button"
+                type="submit"
+              >
+                Submit
+              </button>
             </div>
             <div className="column">
               <div>

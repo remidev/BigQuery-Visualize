@@ -8,8 +8,9 @@ const { BigQuery } = require("@google-cloud/bigquery");
 const bigquery = new BigQuery();
 
 // Set Credentials
-const path =
-  "C:/Users/teddy/Downloads/decoded-reducer-234800-f824d46ed564.json";
+//const path =
+  //"C:/Users/teddy/Downloads/decoded-reducer-234800-f824d46ed564.json";
+const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json"
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
 // Query Function
@@ -18,7 +19,7 @@ async function query() {
   // SQL Query String
   const sqlQuery = `
   SELECT
-    author,
+    ups,
     score
   FROM
   \`fh-bigquery.reddit_comments.2005\`
