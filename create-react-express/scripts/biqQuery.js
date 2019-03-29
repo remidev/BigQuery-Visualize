@@ -12,6 +12,7 @@ const path = "";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
 // Query Function
+// take in params for: 
 const query = async function() {
   // SQL Query String
   const sqlQuery = `
@@ -46,12 +47,15 @@ const query = async function() {
 // Query function call
 // query().catch(console.error);
 
-module.exports = query;
-
 // Resources
 //===================================================================================
 
 // -Query Option Params
 // --https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#request-body
 
+// -Uploading Credentials to Heroku
+// --https://medium.com/@naz_islam/how-to-authenticate-google-cloud-services-on-heroku-for-node-js-app-dda9f4eda798
+
 //===================================================================================
+
+module.exports = query;
