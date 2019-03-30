@@ -23,11 +23,29 @@ class ComposedVerticalLineBarChart extends React.Component {
     }
   }
   
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var TempDataKeyX = Object.keys(val)[0];
+        var TempDataKeyY = Object.keys(val)[1];
+        var TempDataKeyZ = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+    if (!TempDataKeyZ) TempDataKeyZ = "";
+
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
   }
 
   render() {

@@ -31,10 +31,11 @@ const GalleryData = {
     chart() {
       return (
       <div>
-      <div> <h1 className="text-center">Simple Line Chart</h1><SimpleLineChart chart={this.data}/></div><hr></hr> 
-      {/* <div> <h1 className="text-center">Negative Line Chart</h1><CanNegativeChart chart={this.data} /></div><hr></hr> */}
-      {/* <div> <h1 className="text-center">Line Chart With Reference</h1><LineChartWithReference chart={this.data}/></div><hr></hr>
-      <div> <h1 className="text-center">Biaxial Line Chart</h1> <BiaxialLineChart chart={this.data} /></div><hr></hr> */}
+      <div> <h1 className="text-center">Simple Line Chart</h1><SimpleLineChart chart={this.data}/></div><hr></hr>  
+      {/* <div> <h1 className="text-center">Negative Line Chart</h1><CanNegativeChart chart={this.data} /></div><hr></hr>  */}
+      {/* FIX CAN NEGATIVE */}
+      <div> <h1 className="text-center">Line Chart With Reference</h1><LineChartWithReference chart={this.data}/></div><hr></hr>
+      <div> <h1 className="text-center">Biaxial Line Chart</h1> <BiaxialLineChart chart={this.data} /></div><hr></hr>
       </div>
        )
     },
@@ -48,9 +49,10 @@ const GalleryData = {
   //   chart() {
   //     return (
   //     <div>
-  //     <div> <h1 className="text-center">Combination Charts</h1> <ComboCharts chart={this.data}/></div> 
-  //     <div> <h1 className="text-center">Combination Bar Charts</h1> <BarChartMixed chart={this.data} /></div>
-  //     <div> <h1 className="text-center">Composed Line-Bar Charts</h1> <ComposedLineBarChart chart={this.data}/></div>
+  //     {/* <div> <h1 className="text-center">Combination Charts</h1> <ComboCharts chart={this.data}/></div>  */}
+  //     {/* <div> <h1 className="text-center">Combination Bar Charts</h1> <BarChartMixed chart={this.data} /></div>  */} 
+  //     {/* UP TO HERE ^ */}
+  //     {/* <div> <h1 className="text-center">Composed Line-Bar Charts</h1> <ComposedLineBarChart chart={this.data}/></div> */}
   //     <div> <h1 className="text-center">Composed Vertical Line Charts</h1> <ComposedVerticalLineBarChart chart={this.data}/></div>
   //     </div>
   //     )

@@ -16,66 +16,80 @@ class CanNegativeChart extends React.Component {
     console.log(props);
     this.state = {
       data: [],
+      XAxis:"",
       dataKeyX: "",
-      // dataKeyY: ""
+      dataKeyY: "",
+      IntE: "",
     };
   }
-
-  gradientOffset = () => {
-    const dataMax = Math.max(...this.state.data.map(i => i.x));
-    const dataMin = Math.min(...this.state.data.map(i => i.x));
-
-    if (dataMax <= 0) {
-      return 0;
-    } else if (dataMin >= 0) {
-      return 1;
-    } else {
-      return dataMax / (dataMax - dataMin);
-    }
-  };
 
   componentDidMount() {
     for (var key in this.props.chart[0]) {
       if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
         var val = this.props.chart[0];
-        var TempDataKeyX = Object.keys(val)[0];
-        var TempDataKeyY = Object.keys(val)[1];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
       }
     }
     if (!TempDataKeyX) TempDataKeyX = "";
-    // if (!TempDataKeyY) TempDataKeyY = "";
-
-    console.log(TempDataKeyX);
-    // console.log(TempDataKeyY);
+    if (!TempDataKeyY) TempDataKeyY = "";
 
     this.setState({
       data: this.props.chart,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
-      // dataKeyY: TempDataKeyY
+      dataKeyY: TempDataKeyY,
     });
+
+    if(isNaN(this.state.dataKeyX)===false){
+      this.setState({
+        Int: this.state.dataKeyX,
+      })
+    }else if(isNaN(this.state.dataKeyY)===false){
+      this.setState({
+        Int: this.state.dataKeyY,
+      })
+    }else{
+      console.log("No Int Values")
+    }
   }
+
+  // gradientOffset = () => {
+  //   const dataMax = Math.max(...this.state.data.map((i) => i.score));
+  //   const dataMin = Math.min(...this.state.data.map((i) => i.score));
+
+  //   console.log(dataMax, dataMin);
+  //   if (dataMax <= 0) {
+  //     return 0;
+  //   } else if (dataMin >= 0) {
+  //     return 1;
+  //   } else {
+  //     return dataMax / (dataMax - dataMin);
+  //   }
+  // };
 
   render() {
     return (
       <AreaChart
-        width={600}
-        height={300}
+        width={700}
+        height={400}
         data={this.state.data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey={this.state.XAxis} />
         <YAxis />
         <Tooltip />
         <defs>
           <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
             <stop
-              offset={this.gradientOffset()}
+              // offset={this.gradientOffset()}
               stopColor="green"
               stopOpacity={1}
             />
             <stop
-              offset={this.gradientOffset()}
+              // offset={this.gradientOffset()}
               stopColor="red"
               stopOpacity={1}
             />
@@ -83,7 +97,7 @@ class CanNegativeChart extends React.Component {
         </defs>
         <Area
           type="monotone"
-          dataKey={this.state.dataKeyX}
+          dataKey={this.state.IntE}
           stroke="#000"
           fill="url(#splitColor)"
         />

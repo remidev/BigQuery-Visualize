@@ -8,47 +8,50 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Brush,
+  Brush
 } from "recharts";
 
-const data = [
-  // { name: "Page A", x: 4000, y: 2400, z: 2400 },
-  // { name: "Page B", x: 3000, y: 1398, z: 2210 },
-  // { name: "Page C", x: 2000, y: 9800, z: 2290 },
-  // { name: "Page D", x: 2780, y: 3908, z: 2000 },
-  // { name: "Page E", x: 1890, y: 4800, z: 2181 },
-  // { name: "Page F", x: 2390, y: 3800, z: 2500 },
-  // { name: "Page G", x: 3490, y: 4300, z: 2100 }
-];
-
 class BiaxialLineChart extends React.Component {
-
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: data,
-    }
-    console.log(data);
+    this.state = {
+      data: [],
+      dataKeyX: "",
+      dataKeyY: ""
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      XAxis: AxisName,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
   }
 
   render() {
     return (
       <LineChart
-        width={600}
-        height={300}
+        width={700}
+        height={400}
         data={this.state.data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey={this.state.XAxis} />
         <YAxis yAxisId="left" />
         <YAxis yAxisId="right" orientation="right" />
         <Tooltip />
@@ -56,12 +59,17 @@ class BiaxialLineChart extends React.Component {
         <Line
           yAxisId="left"
           type="monotone"
-          dataKey="y"
+          dataKey={this.state.dataKeyY}
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
-        <Line yAxisId="right" type="monotone" dataKey="x" stroke="#82ca9d" />
-        <Brush /> 
+        <Line
+          yAxisId="right"
+          type="monotone"
+          dataKey={this.state.dataKeyX}
+          stroke="#82ca9d"
+        />
+        <Brush />
       </LineChart>
     );
   }

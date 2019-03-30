@@ -19,14 +19,32 @@ class ComboCharts extends React.Component {
     console.log(props);
     this.state={
      data: [],
+     dataKeyX: "",
+     dataKeyY: "",
     }
   }
   
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var TempDataKeyX = Object.keys(val)[0];
+        var TempDataKeyY = Object.keys(val)[1];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
   }
 
   render() {
@@ -40,10 +58,10 @@ class ComboCharts extends React.Component {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis dataKey={this.state.dataKeyX} />
+          <YAxis dataKey={this.state.dataKeyY}/>
           <Tooltip />
-          <Line type="monotone" dataKey="x" stroke="#8884d8" fill="#8884d8" />
+          <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#8884d8" fill="#8884d8" />
       
         </LineChart>
 
@@ -55,10 +73,10 @@ class ComboCharts extends React.Component {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis dataKey={this.state.dataKeyX} />
+          <YAxis dataKey={this.state.dataKeyY}/>
           <Tooltip />
-          <Line type="monotone" dataKey="y" stroke="#82ca9d" fill="#82ca9d" />
+          <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#82ca9d" fill="#82ca9d" />
         
         </LineChart>
 
@@ -70,10 +88,10 @@ class ComboCharts extends React.Component {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey={this.state.dataKeyX} />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="y" stroke="#82ca9d" fill="#82ca9d" />
+          <Area type="monotone" dataKey={this.state.dataKeyY} stroke="#82ca9d" fill="#82ca9d" />
           <Brush /> 
           {/* Brush Controls All  */}
         </AreaChart>

@@ -10,6 +10,7 @@ const styles = {
   marginRight: "auto",
   width: "50%"
 };
+
 // Note name is the X axis grid x,y,z... are the values must be named this way
 class Gallery extends React.Component {
   constructor(props) {
@@ -34,6 +35,15 @@ class Gallery extends React.Component {
     var SelectedSource = Source.options[Source.selectedIndex].value;
     //This Above is the SOURCE VALUE;
 
+    var ContentType = document.getElementById("ContentType");
+    var SelectedContentType =
+      ContentType.options[ContentType.selectedIndex].value;
+    //This Above is the Content1 VALUE;
+
+    var StaticTIME = document.getElementById("StaticTIME");
+    var SelectedTIME = StaticTIME.options[StaticTIME.selectedIndex].value;
+    //XAXIS ex. Page1 Page2 Page3
+
     var Content1 = document.getElementById("Field1");
     var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
     //This Above is the Content1 VALUE;
@@ -42,32 +52,48 @@ class Gallery extends React.Component {
     var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
     //This Above is the Content2 VALUE;
 
-    console.log(SelectedContent1, SelectedContent2, SelectedSource);
+    var Year = document.getElementById("Year");
+    var SelectedYear = Year.options[Year.selectedIndex].value;
+    //This Above is the Year VALUE;
+
+    console.log(
+      SelectedSource,
+      SelectedContentType,
+      StaticTIME,
+      SelectedContent1,
+      SelectedContent2,
+      SelectedYear,
+    );
 
     if (
       SelectedContent1 === "" ||
       SelectedContent2 === "" ||
-      SelectedSource === ""
+      SelectedSource === "" ||
+      ContentType === "" ||
+      Year === ""
     ) {
       return null;
       //Please Select Input Fields;
     }
 
+    //Giving This To Backend
     var queryInfo = {
-     Source: SelectedSource,
-     Content1: SelectedContent1,
-     Content2 : SelectedContent2,
+      Source: SelectedSource,
+      ContentType: SelectedContentType,
+      XAxis: SelectedTIME,
+      Content1: SelectedContent1,
+      Content2: SelectedContent2,
+      Year: SelectedYear
     };
 
     console.log(queryInfo);
 
-    axios.post("/api/give", {queryInfo})
-    .then(res => {
+    axios.post("/api/give", { queryInfo }).then(res => {
       console.log(res.data[0]);
       this.setState({
         data: res.data[0]
       });
-    })
+    });
   }
 
   handleChange(e) {
@@ -97,7 +123,7 @@ class Gallery extends React.Component {
       });
     }
   }
- 
+
   render() {
     // Filter Method
     var GraphComponent = _.map(GalleryData, (value, key) => {
@@ -129,6 +155,20 @@ class Gallery extends React.Component {
               </p>
 
               <p>
+                <select id="ContentType" class="ui dropdown">
+                  <option value="">Content</option>
+                  <option value="comments">comments</option>
+                  <option value="posts">post</option>
+                </select>
+              </p>
+
+              <p>
+                <select id="StaticTIME" class="ui dropdown">
+                  <option value="created_utc">Time Created</option>
+                </select>
+              </p>
+
+              <p>
                 <select id="Field1" class="ui dropdown">
                   <option value="">Content</option>
                   <option value="subreddit">Subreddit</option>
@@ -154,6 +194,24 @@ class Gallery extends React.Component {
                 </select>
               </p>
 
+              <p>
+                <select id="Year" class="ui dropdown">
+                  <option value="">Year</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                </select>
+              </p>
+
               <button
                 onClick={this.handleSubmit}
                 class="ui button"
@@ -167,7 +225,7 @@ class Gallery extends React.Component {
                 <h4 className="ui center aligned grid">Tools</h4>
                 <hr />
                 {unique.map((checkers, i) => {
-                return (
+                  return (
                     <label style={styles}>
                       <input
                         type="checkbox"

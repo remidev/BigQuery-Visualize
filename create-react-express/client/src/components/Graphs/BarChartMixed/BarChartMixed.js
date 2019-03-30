@@ -18,14 +18,35 @@ class BarChartMixed extends React.Component {
     console.log(props);
     this.state={
      data: [],
+     dataKeyX: "",
+     dataKeyY: "",
+     dataKeyZ: "",
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var TempDataKeyX = Object.keys(val)[0];
+        var TempDataKeyY = Object.keys(val)[1];
+        var TempDataKeyZ = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+    if (!TempDataKeyZ) TempDataKeyZ = "";
+
+    console.log(TempDataKeyX);
+    console.log(TempDataKeyY);
+    console.log(TempDataKeyZ);
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY,
+      dataKeyZ: TempDataKeyZ,
+    });
   }
 
   render() {
@@ -41,9 +62,9 @@ class BarChartMixed extends React.Component {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="z" stackId="a" fill="#8884d8" />
-        <Bar dataKey="y" stackId="a" fill="#82ca9d" />
-        <Bar dataKey="x" fill="#ffc658" />
+        <Bar dataKey={this.state.dataKeyX} stackId="a" fill="#8884d8" />
+        <Bar dataKey={this.state.dataKeyY} stackId="a" fill="#82ca9d" />
+        <Bar dataKey={this.state.dataKeyZ} fill="#ffc658" />
         <Brush />
       </BarChart>
     );
