@@ -1,35 +1,51 @@
-const query = require("../scripts/biqQuery");
+// Enable Strict Mode
+("use strict");
+const { BigQuery } = require("@google-cloud/bigquery");
 
-<<<<<<< HEAD
-// query().then(function(res) {
-//   console.log(res);
-// });
+// Set Credentials
+//const path =
+//"C:/Users/teddy/Downloads/decoded-reducer-234800-f824d46ed564.json";
+const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json";
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
-module.exports = function(app) {
-  app.get("/api/all", function(req, res) {
-    console.log("hello");
-    query().then(function(result) {
-      res.json(result);
-    });
-  });
+const router = require("express").Router();
 
-  app.post("/api/give", function(req, res) {
-    console.log("red.body: ", req.body);
-    console.log("red.body.source: ", req.body.source);
+async function query(source, contentType, content1, content2, year) {
+  const bigquery = new BigQuery();
+  // SQL Query String
+  var sqlQuery = `SELECT ${content1},${content2} FROM \`${source}${contentType}.${year}\`LIMIT 10`;
+  console.log(`SELECT ${content1},${content2} FROM \`${source}${contentType}.${year}\`LIMIT 10`);
+  // Query Options,
+  const options = {
+    query: sqlQuery,
+    location: "US"
+  };
+  const [rows] = await bigquery.query(options);
+  return [rows];
+}
+
+router.post("/api/give", function(req, res) {
+  console.log(req.body.queryInfo);
+  params = req.body.queryInfo;
+  
+  query(
+    params.Source,
+    "comments",
+    params.Content1,
+    params.Content2,
+    "2005"
+  ).then(function(resOfQuery){
+      res.json(resOfQuery);
+      console.log("HELLO WORLD!");
   });
-};
-=======
-router.get("/api/all", function(req, res) {
-  console.log("hello");
-  var x = "Hello";
-  query().then(function(result) {
-    res.json(result);
-  });
-  // res.json({ value: x });
 });
 
 module.exports = router;
-router.post("api/grab",function(req,res){
-  
-})
->>>>>>> 67b972cb6c6c24861cbe06394e0217eb12e78ee2
+
+
+
+// router.get("/api/all", function(req, res) {
+//   query().then(function(result) {
+//     res.json(result);
+//   });
+// });

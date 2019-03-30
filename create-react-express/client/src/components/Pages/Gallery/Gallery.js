@@ -21,14 +21,6 @@ class Gallery extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    axios.get("/api/all").then(res => {
-      console.log(res.data[0]);
-      this.setState({
-        data: res.data[0]
-      });
-    });
-  }
 
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
@@ -36,7 +28,7 @@ class Gallery extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("Hello");
+    console.log("Button Has Clicked");
 
     var Source = document.getElementById("Source");
     var SelectedSource = Source.options[Source.selectedIndex].value;
@@ -67,9 +59,15 @@ class Gallery extends React.Component {
      Content2 : SelectedContent2,
     };
 
-    axios.post("/api/give", queryInfo).then(function() {
-      console.log("Info Given to Backend");
-    });
+    console.log(queryInfo);
+
+    axios.post("/api/give", {queryInfo})
+    .then(res => {
+      console.log(res.data[0]);
+      this.setState({
+        data: res.data[0]
+      });
+    })
   }
 
   handleChange(e) {
@@ -99,9 +97,7 @@ class Gallery extends React.Component {
       });
     }
   }
-  // componentDidMount(){
-
-  // }
+ 
   render() {
     // Filter Method
     var GraphComponent = _.map(GalleryData, (value, key) => {
@@ -127,7 +123,7 @@ class Gallery extends React.Component {
               <p>
                 <select id="Source" class="ui dropdown">
                   <option value="">Source</option>
-                  <option value="Reddit">Reddit</option>
+                  <option value="fh-bigquery.reddit_">Reddit</option>
                   <option value="StacksOverflow">Stacks Overflow</option>
                 </select>
               </p>
@@ -171,7 +167,7 @@ class Gallery extends React.Component {
                 <h4 className="ui center aligned grid">Tools</h4>
                 <hr />
                 {unique.map((checkers, i) => {
-                  return (
+                return (
                     <label style={styles}>
                       <input
                         type="checkbox"
