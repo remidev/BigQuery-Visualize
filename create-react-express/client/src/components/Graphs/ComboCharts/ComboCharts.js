@@ -28,67 +28,64 @@ class ComboCharts extends React.Component {
     for (var key in this.props.chart[0]) {
       if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
         var val = this.props.chart[0];
-        var TempDataKeyX = Object.keys(val)[0];
-        var TempDataKeyY = Object.keys(val)[1];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
       }
     }
     if (!TempDataKeyX) TempDataKeyX = "";
     if (!TempDataKeyY) TempDataKeyY = "";
 
-    console.log(TempDataKeyX);
-    console.log(TempDataKeyY);
-
     this.setState({
       data: this.props.chart,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
     });
-    console.log(TempDataKeyX);
-    console.log(TempDataKeyY);
   }
 
   render() {
     return (
       <div>
         <LineChart
-          width={600}
-          height={300}
+          width={700}
+          height={400}
           data={this.state.data}
           syncId="anyId"
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={this.state.dataKeyX} />
-          <YAxis dataKey={this.state.dataKeyY}/>
-          <Tooltip />
-          <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#8884d8" fill="#8884d8" />
+          <XAxis dataKey={this.state.XAxis} />
+          <YAxis />
+          <Tooltip  cursor={{ stroke: 'red', strokeWidth: 2 }}/>
+          <Line type="monotone"  dot={{ stroke: 'red', strokeWidth: 2 }} dataKey={this.state.dataKeyY} stroke="#8884d8" fill="#8884d8" />
       
         </LineChart>
 
         <LineChart
-          width={600}
-          height={300}
+          width={700}
+          height={400}
           data={this.state.data}
           syncId="anyId"
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={this.state.dataKeyX} />
-          <YAxis dataKey={this.state.dataKeyY}/>
+          <XAxis dataKey={this.state.XAxis} />
+          <YAxis />
           <Tooltip />
           <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#82ca9d" fill="#82ca9d" />
         
         </LineChart>
 
         <AreaChart
-          width={600}
-          height={300}
+          width={700}
+          height={400}
           data={this.state.data}
           syncId="anyId"
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={this.state.dataKeyX} />
+          <XAxis dataKey={this.state.XAxis} />
           <YAxis />
           <Tooltip />
           <Area type="monotone" dataKey={this.state.dataKeyY} stroke="#82ca9d" fill="#82ca9d" />

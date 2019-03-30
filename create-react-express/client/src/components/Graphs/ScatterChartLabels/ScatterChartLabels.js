@@ -17,29 +17,45 @@ class ScatterChartLabels extends React.Component {
     console.log(props);
     this.state = {
       data: [],
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: ""
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      XAxis: AxisName,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
   }
 
   render() {
     return (
       <ScatterChart
-        width={600}
-        height={300}
+        width={700}
+        height={400}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
-        <XAxis type="number" dataKey={"x"} name="stature" unit="cm" />
-        <YAxis type="number" dataKey={"y"} name="weight" unit="kg" />
+        <XAxis dataKey={this.state.dataKeyX} type="number" name={this.state.dataKeyX} />
+        <YAxis dataKey={this.state.dataKeyY} type="number" name={this.state.dataKeyY} />
         <CartesianGrid />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-        <Scatter name="A school" data={this.state.data} fill="#8884d8">
-          <LabelList dataKey="x" />
+        <Scatter name="ScatterPlot" data={this.state.data} fill="#8884d8">
+          <LabelList dataKey={this.state.dataKeyX} />
         </Scatter>
       </ScatterChart>
     );

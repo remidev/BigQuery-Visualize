@@ -16,41 +16,53 @@ class ScatterChartMultiY extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      data01: [],
-      data02: [],
+      data: [],
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: ""
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      XAxis: AxisName,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
   }
+
 
   render() {
     return (
       <ScatterChart
-        width={600}
-        height={300}
+        width={700}
+        height={400}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
-        <XAxis type="number" dataKey={"x"} name="stature" unit="cm" />
+        <XAxis type="number" dataKey={this.state.dataKeyX} name={this.state.dataKeyX}  />
         <CartesianGrid />
         <YAxis
           yAxisId="left"
           type="number"
-          dataKey="y"
-          name="weight"
-          unit="kg"
+          dataKey={this.state.XAxis}
           stroke="#8884d8"
         />
         <YAxis
           yAxisId="right"
           type="number"
-          dataKey="y"
-          name="weight"
-          unit="kg"
+          dataKey={this.state.XAxis}
           orientation="right"
           stroke="#82ca9d"
         />

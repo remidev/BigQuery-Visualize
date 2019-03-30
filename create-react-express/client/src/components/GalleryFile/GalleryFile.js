@@ -25,7 +25,7 @@ function GalleryFile(props) {
     backgroundColor: "whitesmoke",
     border: "2px solid black",
     margin: "30px",
-    // width: " 600px"
+
   };
 
   return (
@@ -38,6 +38,7 @@ function GalleryFile(props) {
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
           <Header> Statistics! </Header>
+          <Header> {props.chart[0]}</Header>
           </Grid.Column>
         </Grid.Row>
       </Grid>

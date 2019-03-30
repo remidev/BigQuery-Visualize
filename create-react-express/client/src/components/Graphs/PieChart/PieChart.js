@@ -11,6 +11,9 @@ class PieChartN extends React.Component {
     console.log(props);
     this.state={
      data: [],
+     XAxis: "",
+     dataKeyX: "",
+     dataKeyY: ""
     }
   }
   
@@ -53,10 +56,11 @@ class PieChartN extends React.Component {
 
   render() {
     return (
-      <PieChart width={600} height={300} onMouseEnter={this.onPieEnter}>
+      <PieChart width={700} height={400} onMouseEnter={this.onPieEnter}>
         <Pie
+          // key={}
           data={this.state.data}
-          dataKey="x"
+          dataKey={this.state.dataKeyX}
           cx={300}
           cy={200}
           labelLine={false}

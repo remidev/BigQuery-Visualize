@@ -12,20 +12,9 @@ import {
   // Brush
 } from "recharts";
 
-const data = [
-  // { name: 12, x: 4.41, y: 300 },
-  // { name: 13, x: 2.1, y: 50 },
-  // { name: 14, x: 8, y: 190 },
-  // { name: 15, x: 0, y: 300 },
-  // { name: 16, x: 9, y: 400 },
-  // { name: 17, x: 3, y: 200 },
-  // { name: 18, x: 2, y: 50 },
-  // { name: 19, x: 3, y: 100 },
-  // { name: 20, x: 7, y: 100 }
-];
 
 const getAxisYDomain = (from, to, ref, offset) => {
-  const refData = data.slice(from - 1, to);
+  const refData = this.state.data.slice(from - 1, to);
   let [bottom, top] = [refData[0][ref], refData[0][ref]];
   refData.forEach(d => {
     if (d[ref] > top) top = d[ref];
@@ -53,16 +42,33 @@ class ZoomChart extends React.Component {
     console.log(props);
     this.state = {
       data: [],
-      state: initialState
+      state: initialState,
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: ""
     };
     // console.log(data);
   }
 
-  componentDidMount(){
+ 
+  componentDidMount() {
+    for (var key in this.props.chart[0]) {
+      if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
+        var val = this.props.chart[0];
+        var AxisName = Object.keys(val)[0];
+        var TempDataKeyX = Object.keys(val)[1];
+        var TempDataKeyY = Object.keys(val)[2];
+      }
+    }
+    if (!TempDataKeyX) TempDataKeyX = "";
+    if (!TempDataKeyY) TempDataKeyY = "";
+
     this.setState({
-      data: this.props.chart
-    })
-    // console.log(this.props)
+      data: this.props.chart,
+      XAxis: AxisName,
+      dataKeyX: TempDataKeyX,
+      dataKeyY: TempDataKeyY
+    });
   }
 
   zoom() {
@@ -101,12 +107,6 @@ class ZoomChart extends React.Component {
       top2
     }));
   }
-
-  // componentDidMount() {
-  //   this.setState(state => {
-  //     return { data: state.data };
-  //   });
-  // }
 
   zoomOut() {
     const { data } = this.state;
@@ -148,8 +148,8 @@ class ZoomChart extends React.Component {
         </a>
 
         <LineChart
-          width={600}
-          height={300}
+          width={700}
+          height={400}
           data={this.state.data}
           onMouseDown={e => this.setState({ refAreaLeft: e.activeLabel })}
           onMouseMove={e =>
@@ -161,7 +161,7 @@ class ZoomChart extends React.Component {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             allowDataOverflow={true}
-            dataKey="name"
+            dataKey={this.state.XAxis}
             domain={[left, right]}
             type="number"
           />
@@ -182,14 +182,14 @@ class ZoomChart extends React.Component {
           <Line
             yAxisId="1"
             type="natural"
-            dataKey="x"
+            dataKey={this.state.dataKeyX}
             stroke="#8884d8"
             animationDuration={300}
           />
           <Line
             yAxisId="2"
             type="natural"
-            dataKey="y"
+            dataKey={this.state.dataKeyY}
             stroke="#82ca9d"
             animationDuration={300}
           />

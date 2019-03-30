@@ -45,19 +45,19 @@ class LineChartWithReference extends React.Component {
       }
     }
 
-      delete val[Object.keys(val)];
-      console.log(val);
-      var arr = Object.keys(val).map(function(key) {
-        console.log(val[key]);
-        return val[key];
-      });
-      var max = Math.max.apply(null, arr);
-      var min = Math.min.apply(null, arr);
-      this.setState({
-        MaxValue: max,
-        MinValue: min,
-      });
-      console.log("Min value: " + min + ", max value: " + max);
+      // delete val[Object.keys(val)];
+      // console.log(val);
+      // var arr = Object.keys(val).map(function(key) {
+      //   console.log(val[key]);
+      //   return val[key];
+      // });
+      // var max = Math.max.apply(null, arr);
+      // var min = Math.min.apply(null, arr);
+      // this.setState({
+      //   MaxValue: max,
+      //   MinValue: min,
+      // });
+      // console.log("Min value: " + min + ", max value: " + max);
 
     console.log(TempDataKeyX);
     console.log(TempDataKeyY);
@@ -76,8 +76,8 @@ class LineChartWithReference extends React.Component {
         <YAxis />
         <Tooltip />
         <Legend />
-        <ReferenceLine y={this.state.MinValue} stroke="red" label="Min" />
-        <ReferenceLine y={this.state.MaxValue} label="Max" stroke="red" />
+        {/* <ReferenceLine y={this.state.MinValue} stroke="red" label="Min" />
+        <ReferenceLine y={this.state.MaxValue} label="Max" stroke="red" /> */}
         <Line type="monotone" dataKey={this.state.dataKeyY} stroke="#8884d8" />
         <Line type="monotone" dataKey={this.state.dataKeyX} stroke="#82ca9d" />
         <Brush />
