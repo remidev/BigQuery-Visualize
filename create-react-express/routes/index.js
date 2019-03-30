@@ -10,6 +10,7 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 
 const router = require("express").Router();
 
+
 async function query(source, contentType, Xaxis, content1, content2, year) {
   const bigquery = new BigQuery();
   // SQL Query String
@@ -36,6 +37,7 @@ router.post("/api/give", function(req, res) {
     params.Content2,
     params.Year,
   ).then(function(resOfQuery){
+    // console.log(resOfQuery);
       res.json(resOfQuery);
   });
 });

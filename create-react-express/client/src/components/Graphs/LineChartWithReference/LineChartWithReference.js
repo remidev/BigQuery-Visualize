@@ -45,22 +45,22 @@ class LineChartWithReference extends React.Component {
       }
     }
 
-      // delete val[Object.keys(val)];
-      // console.log(val);
-      // var arr = Object.keys(val).map(function(key) {
-      //   console.log(val[key]);
-      //   return val[key];
-      // });
-      // var max = Math.max.apply(null, arr);
-      // var min = Math.min.apply(null, arr);
-      // this.setState({
-      //   MaxValue: max,
-      //   MinValue: min,
-      // });
-      // console.log("Min value: " + min + ", max value: " + max);
+    //   delete val[Object.keys(val)];
+    //   console.log(val);
+    //   var arr = Object.keys(val).map(function(key) {
+    //     console.log(val[key]);
+    //     return val[key];
+    //   });
+    //   var max = Math.max.apply(null, arr);
+    //   var min = Math.min.apply(null, arr);
+    //   this.setState({
+    //     MaxValue: max,
+    //     MinValue: min,
+    //   });
+    //   console.log("Min value: " + min + ", max value: " + max);
 
-    console.log(TempDataKeyX);
-    console.log(TempDataKeyY);
+    // console.log(TempDataKeyX);
+    // console.log(TempDataKeyY);
   }
 
   render() {

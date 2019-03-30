@@ -4,11 +4,23 @@ import GalleryFile from "../../GalleryFile/GalleryFile";
 import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
 import axios from "axios";
+import moment from "moment";
 
-const styles = {
+const ToolStyles = {
   marginLeft: "auto",
   marginRight: "auto",
   width: "50%"
+};
+
+const TextFieldStyles = {
+  marginLeft: "auto",
+  marginRight: "auto",
+  width: "100%",
+};
+
+const TextFieldContainerStyle = {
+  display:"flex",
+  justifyContent:"space-evenly"
 };
 
 // Note name is the X axis grid x,y,z... are the values must be named this way
@@ -62,7 +74,7 @@ class Gallery extends React.Component {
       StaticTIME,
       SelectedContent1,
       SelectedContent2,
-      SelectedYear,
+      SelectedYear
     );
 
     if (
@@ -90,8 +102,18 @@ class Gallery extends React.Component {
 
     axios.post("/api/give", { queryInfo }).then(res => {
       console.log(res.data[0]);
+
+      var info = res.data[0];
+      var testArr = [...info];
+      console.log(testArr);
+      for (let i = 0; i < testArr.length; i++) {
+        testArr[i].created_utc = moment(testArr[i].created_utc).format(
+          "YYYY-MM-DD"
+        );
+      }
+      console.log(testArr);
       this.setState({
-        data: res.data[0]
+        data: testArr,
       });
     });
   }
@@ -131,6 +153,7 @@ class Gallery extends React.Component {
         return (
           <GalleryFile
             chart={value.chart()}
+            fileData={this.state.data}
             key={value.id}
             handleChange={this.handleChange}
           />
@@ -145,9 +168,9 @@ class Gallery extends React.Component {
       <div>
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
-            <div className="column">
+            <div className="column" style={TextFieldContainerStyle}>
               <p>
-                <select id="Source" class="ui dropdown">
+                <select id="Source" class="ui dropdown" style={TextFieldStyles}>
                   <option value="">Source</option>
                   <option value="fh-bigquery.reddit_">Reddit</option>
                   <option value="StacksOverflow">Stacks Overflow</option>
@@ -155,7 +178,7 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="ContentType" class="ui dropdown">
+                <select id="ContentType" class="ui dropdown" style={TextFieldStyles}>
                   <option value="">Content</option>
                   <option value="comments">comments</option>
                   <option value="posts">post</option>
@@ -163,13 +186,13 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="StaticTIME" class="ui dropdown">
+                <select id="StaticTIME" class="ui dropdown" style={TextFieldStyles}>
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
 
               <p>
-                <select id="Field1" class="ui dropdown">
+                <select id="Field1" class="ui dropdown" style={TextFieldStyles}>
                   <option value="">Content</option>
                   <option value="subreddit">Subreddit</option>
                   <option value="author">Author</option>
@@ -182,7 +205,7 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="Field2" class="ui dropdown">
+                <select id="Field2" class="ui dropdown" style={TextFieldStyles}>
                   <option value="">Content</option>
                   <option value="subreddit">Subreddit</option>
                   <option value="author">Author</option>
@@ -195,7 +218,7 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="Year" class="ui dropdown">
+                <select id="Year" class="ui dropdown" style={TextFieldStyles}>
                   <option value="">Year</option>
                   <option value="2011">2011</option>
                   <option value="2010">2010</option>
@@ -212,21 +235,25 @@ class Gallery extends React.Component {
                 </select>
               </p>
 
+              <section>
               <button
                 onClick={this.handleSubmit}
                 class="ui button"
+                // style={TextFieldStyles}
                 type="submit"
               >
                 Submit
               </button>
+              </section>
             </div>
+            
             <div className="column">
               <div>
                 <h4 className="ui center aligned grid">Tools</h4>
                 <hr />
                 {unique.map((checkers, i) => {
                   return (
-                    <label style={styles}>
+                    <label style={ToolStyles}>
                       <input
                         type="checkbox"
                         key={i}

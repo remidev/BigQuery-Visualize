@@ -3,10 +3,10 @@ import SimpleLineChart from "../../Graphs/LineChart/LineChart";
 import BiaxialLineChart from "../../Graphs/BiaxialLineChart/BiaxialLineChart";
 import LineChartWithReference from "../../Graphs/LineChartWithReference/LineChartWithReference";
 import ComboCharts from "../../Graphs/ComboCharts/ComboCharts";
-import ZoomChart from "../../Graphs/ZoomChart/ZoomChart";
+// import ZoomChart from "../../Graphs/ZoomChart/ZoomChart";
 import OverlayAreaChart from "../../Graphs/OverlayAreaChart/OverlayAreaChart";
 import PercentChart from "../../Graphs/PercentChart/PercentChart";
-import CanNegativeChart from "../../Graphs/CanNegativeChart/CanNegativeChart";
+// import CanNegativeChart from "../../Graphs/CanNegativeChart/CanNegativeChart";
 import BarChartN from "../../Graphs/BarChart/BarChart";
 import BarChartStacked from "../../Graphs/BarChartStacked/BarChartStacked";
 import BarChartMixed from "../../Graphs/BarChartMixed/BarChartMixed";
@@ -20,7 +20,7 @@ import PieChartN from "../../Graphs/PieChart/PieChart";
 import ScatterChartN from "../../Graphs/ScatterChart/ScatterChart";
 import ScatterChartLabels from "../../Graphs/ScatterChartLabels/ScatterChartLabels";
 import ScatterChartMultiY from "../../Graphs/ScatterChartMultiY/ScatterChartMultiY";
-import RadarChartN from "../../Graphs/RadarChart/RadarChart";
+// import RadarChartN from "../../Graphs/RadarChart/RadarChart";
 // import ScatterPlotColor from "../../Graphs/d3ScatterPlot/d3ScatterPlot";
 
 const GalleryData = {
@@ -31,7 +31,7 @@ const GalleryData = {
     chart() {
       return (
       <div>
-      <div> <h1 className="text-center">Simple Line Chart</h1><SimpleLineChart chart={this.data}/></div><hr></hr>  
+      <div> <h1 className="text-center">Simple Line Chart</h1><SimpleLineChart chart={this.data} fileData={this.data}/></div><hr></hr>  
       {/* <div> <h1 className="text-center">Negative Line Chart</h1><CanNegativeChart chart={this.data} /></div><hr></hr>  */}
       {/* FIX CAN NEGATIVE */}
       <div> <h1 className="text-center">Line Chart With Reference</h1><LineChartWithReference chart={this.data}/></div><hr></hr>
