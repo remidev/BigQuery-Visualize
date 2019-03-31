@@ -46,4 +46,27 @@ router.post("/api/give", function(req, res) {
   });
 });
 
+//emotions returned:
+//anger, fear, joy, sadness, surprise
+function getEmotion(inputStr) {
+  // Emotion parser URL
+  queryURL = "https://apiv2.indico.io/emotion";
+
+  // Send user speech input
+  $.post(
+    queryURL,
+    JSON.stringify({
+      api_key: "84c0bce00bc55ebb8c950f6e351eee4d",
+      data: inputStr,
+      //only return values more than 0.1 (confidence threshold)
+      threshold: 0.1
+    })
+  ).then(function(response) {
+    //return the name of the key with the highest value
+    let obj = response.results;
+    let emotion = Object.keys(obj).reduce((a, b) => (obj[a] > obj[b] ? a : b));
+    return emotion;
+  });
+}
+
 module.exports = router;
