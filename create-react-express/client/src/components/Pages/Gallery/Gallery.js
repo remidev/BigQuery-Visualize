@@ -112,7 +112,7 @@ class Gallery extends React.Component {
       for (let i = 0; i < testArr.length; i++) {
         testArr[i].created_utc = moment
           .unix(testArr[i].created_utc)
-          .format("MM/DD/YYYY");
+          .format("MM/DD");
       }
       console.log(testArr);
       this.setState({
