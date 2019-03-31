@@ -108,9 +108,9 @@ class Gallery extends React.Component {
       var testArr = [...info];
       console.log(testArr);
       for (let i = 0; i < testArr.length; i++) {
-        testArr[i].created_utc = moment(testArr[i].created_utc).format(
-          "YYYY-MM-DD"
-        );
+        testArr[i].created_utc = moment
+          .unix(testArr[i].created_utc)
+          .format("MM/DD/YYYY");
       }
       console.log(testArr);
       this.setState({
