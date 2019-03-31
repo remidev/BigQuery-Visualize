@@ -158,7 +158,7 @@ const HomepageLayout = () => (
               What are we known for?
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-             We compiled a very large array of data from the internet and allow our users to explore this data through experimenting with a multitude of graphs.
+             We compiled a very large array of data from the internet and allow our users to explore this data by experimenting with a multitude of graphs.
              Therefore, the users themselves draw their own conclusions through pure data analytics.
             </p>
             <Header as="h3" style={{ fontSize: "2em" }}>
@@ -192,7 +192,7 @@ const HomepageLayout = () => (
         <Grid.Row textAlign="center">
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
             <Header as="h3" style={{ fontSize: "2em" }}>
-              Suprisingly Easy To Use!
+            Surprisingly Easy To Use!
             </Header>
             <p style={{ fontSize: "1.33em" }}>
              Just ask yourself what you want to compare and we'll do the rest!
@@ -206,7 +206,7 @@ const HomepageLayout = () => (
               {/* <Image avatar src="/images/avatar/large/nan.jpg" />
               <b>Nan</b> Chief Fun Officer Acme Toys */}
               Most of our data is supplied by Google Big Query Itself.
-              It provides a massively large datasets working in conjunction with Google Storage.
+              It provides massively large datasets working in conjunction with Google Storage.
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -221,7 +221,7 @@ const HomepageLayout = () => (
         <p style={{ fontSize: "1.33em" }}>
           Instead of focusing on content creation and hard work, we have learned
           how to master the art of researching nothing by providing massive amounts for the
-          user to draw their own conclusions. We simply generate the graphs and information.
+          user to draw their own conclusions. We simply generate graphs and information.
           Happy Data Analyzing!
         </p>
         <Button as="a" href="/about" size="large">
@@ -269,7 +269,7 @@ const HomepageLayout = () => (
                 Wow You Reached The End~
               </Header>
               <p>
-               Wow You Reached the end of our page. New content is consistently being added weekly.
+               Wow! You Reached the end of our page. New content is consistently being added weekly.
                This includes graphs, more massive quantities of data and more!
 
                Don't forget to like, comment and subscribe :^)
