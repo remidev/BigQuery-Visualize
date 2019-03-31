@@ -15,12 +15,12 @@ const ToolStyles = {
 const TextFieldStyles = {
   marginLeft: "auto",
   marginRight: "auto",
-  width: "100%",
+  width: "100%"
 };
 
 const TextFieldContainerStyle = {
-  display:"flex",
-  justifyContent:"space-evenly"
+  display: "flex",
+  justifyContent: "space-evenly"
 };
 
 // Note name is the X axis grid x,y,z... are the values must be named this way
@@ -100,6 +100,7 @@ class Gallery extends React.Component {
 
     console.log(queryInfo);
 
+    // Hit backend query route (/routes/index.js) and send query params inside queryInfo object
     axios.post("/api/give", { queryInfo }).then(res => {
       console.log(res.data[0]);
 
@@ -113,7 +114,7 @@ class Gallery extends React.Component {
       }
       console.log(testArr);
       this.setState({
-        data: testArr,
+        data: testArr
       });
     });
   }
@@ -178,7 +179,11 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="ContentType" class="ui dropdown" style={TextFieldStyles}>
+                <select
+                  id="ContentType"
+                  class="ui dropdown"
+                  style={TextFieldStyles}
+                >
                   <option value="">Content</option>
                   <option value="comments">comments</option>
                   <option value="posts">post</option>
@@ -186,7 +191,11 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="StaticTIME" class="ui dropdown" style={TextFieldStyles}>
+                <select
+                  id="StaticTIME"
+                  class="ui dropdown"
+                  style={TextFieldStyles}
+                >
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
@@ -236,17 +245,17 @@ class Gallery extends React.Component {
               </p>
 
               <section>
-              <button
-                onClick={this.handleSubmit}
-                class="ui button"
-                // style={TextFieldStyles}
-                type="submit"
-              >
-                Submit
-              </button>
+                <button
+                  onClick={this.handleSubmit}
+                  class="ui button"
+                  // style={TextFieldStyles}
+                  type="submit"
+                >
+                  Submit
+                </button>
               </section>
             </div>
-            
+
             <div className="column">
               <div>
                 <h4 className="ui center aligned grid">Tools</h4>
