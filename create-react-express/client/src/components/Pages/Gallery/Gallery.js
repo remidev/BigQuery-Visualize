@@ -15,7 +15,7 @@ const ToolStyles = {
 const TextFieldStyles = {
   marginLeft: "auto",
   marginRight: "auto",
-  width: "100%",
+  width: "100%"
 };
 
 const TextFieldContainerStyle = {
@@ -102,6 +102,7 @@ class Gallery extends React.Component {
 
     console.log(queryInfo);
 
+    // Hit backend query route (/routes/index.js) and send query params inside queryInfo object
     axios.post("/api/give", { queryInfo }).then(res => {
       console.log(res.data[0]);
 
@@ -109,13 +110,13 @@ class Gallery extends React.Component {
       var testArr = [...info];
       console.log(testArr);
       for (let i = 0; i < testArr.length; i++) {
-        testArr[i].created_utc = moment(testArr[i].created_utc).format(
-          "YYYY-MM-DD"
-        );
+        testArr[i].created_utc = moment
+          .unix(testArr[i].created_utc)
+          .format("MM/DD/YYYY");
       }
       console.log(testArr);
       this.setState({
-        data: testArr,
+        data: testArr
       });
     });
   }
@@ -183,7 +184,11 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="ContentType" class="ui dropdown" style={TextFieldStyles}>
+                <select
+                  id="ContentType"
+                  class="ui dropdown"
+                  style={TextFieldStyles}
+                >
                   <option value="">Content</option>
                   <option value="comments">comments</option>
                   <option value="posts">post</option>
@@ -191,7 +196,11 @@ class Gallery extends React.Component {
               </p>
 
               <p>
-                <select id="StaticTIME" class="ui dropdown" style={TextFieldStyles}>
+                <select
+                  id="StaticTIME"
+                  class="ui dropdown"
+                  style={TextFieldStyles}
+                >
                   <option value="created_utc">Time Created</option>
                 </select>
               </p>
@@ -247,7 +256,7 @@ class Gallery extends React.Component {
               </button>
               </section>
             </div>
-            
+
             <div className="column">
               <div>
                 <h4 className="ui center aligned grid">Tools</h4>
