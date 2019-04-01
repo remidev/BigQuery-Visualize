@@ -5,6 +5,7 @@ import GalleryData from "../Gallery/GalleryData";
 import _ from "lodash";
 import axios from "axios";
 import moment from "moment";
+import './GallerySpinner.css';
 
 const ToolStyles = {
   marginLeft: "auto",
@@ -37,21 +38,34 @@ class Gallery extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
+  UncheckAll(){ 
+    var checkBoxes = document.getElementsByTagName('input'); 
+    for(var i = 0; i < checkBoxes.length; i++){ 
+      if(checkBoxes[i].type==='checkbox'){ 
+        checkBoxes[i].checked = false; 
+      }
+    }
+    this.setState({
+      filter: [],
+    });
+} 
   updateGalleryData(chartName, data) {
     GalleryData[chartName].data = data;
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("Button Has Clicked");
+    this.UncheckAll();
+    
+    var SubmitQueryButton = document.getElementById("SubmitQueryButton");
 
     var Source = document.getElementById("Source");
     var SelectedSource = Source.options[Source.selectedIndex].value;
     //This Above is the SOURCE VALUE;
 
     var ContentType = document.getElementById("ContentType");
-    var SelectedContentType =
-      ContentType.options[ContentType.selectedIndex].value;
+    var SelectedContentType = ContentType.options[ContentType.selectedIndex].value;
     //This Above is the Content1 VALUE;
 
     var StaticTIME = document.getElementById("StaticTIME");
@@ -78,16 +92,31 @@ class Gallery extends React.Component {
       SelectedContent2,
       SelectedYear
     );
+    
+    //CSS CHECKER
+    SelectedSource==="" ? Source.style.backgroundColor = "#f8d7da" : Source.style.backgroundColor="#d8e9d2";
+    SelectedContentType==="" ? ContentType.style.backgroundColor = "#f8d7da" : ContentType.style.backgroundColor="#d8e9d2";
+    SelectedContent1=== "" ? Content1.style.backgroundColor = "#f8d7da" :Content1.style.backgroundColor= "#d8e9d2";
+    SelectedContent2=== "" ? Content2.style.backgroundColor = "#f8d7da" :Content2.style.backgroundColor= "#d8e9d2";
+    SelectedTIME==="" ? StaticTIME.style.backgroundColor = "#f8d7da" :StaticTIME.style.backgroundColor= "#d8e9d2";
+    SelectedYear==="" ? Year.style.backgroundColor = "#f8d7da" : Year.style.backgroundColor="#d8e9d2";
 
+    //Returns NULL
     if (
       SelectedContent1 === "" ||
       SelectedContent2 === "" ||
       SelectedSource === "" ||
-      ContentType === "" ||
-      Year === ""
+      SelectedContentType === "" ||
+      SelectedYear === ""
     ) {
       return null;
-      //Please Select Input Fields;
+    }
+
+    //IF SAME CONTENT
+    if(SelectedContent2===SelectedContent1){
+     Content1.style.backgroundColor = "#f8d7da" ;
+     Content2.style.backgroundColor = "#f8d7da";
+      return null;
     }
 
     //Giving This To Backend
@@ -100,24 +129,37 @@ class Gallery extends React.Component {
       Year: SelectedYear
     };
 
-    console.log(queryInfo);
-
+    SubmitQueryButton.classList.add("spinner");
+    document.getElementById("DisableEffect").classList.add("disable");
     // Hit backend query route (/routes/index.js) and send query params inside queryInfo object
-    axios.post("/api/give", { queryInfo }).then(res => {
-      console.log(res.data[0]);
-
-      var info = res.data[0];
-      var testArr = [...info];
-      console.log(testArr);
-      for (let i = 0; i < testArr.length; i++) {
-        testArr[i].created_utc = moment
-          .unix(testArr[i].created_utc)
-          .format("MM/DD");
+    axios.post("/api/give", { queryInfo }, {
+      timeout: 5000
+    }).catch(error => {
+      if (error.code === 'ECONNABORTED')
+          return "timeout"}).then(res => {
+            
+          if(res==="timeout"){
+          document.getElementById("NoQueryFound").style.display = "block";
+        }else{
+          document.getElementById("DisableFirst").classList.remove("disable");
+          document.getElementById("NoQueryFound").style.display = "none";
+        console.log(res.data[0]);
+        var info = res.data[0];
+        console.log(info);
+        var testArr = [...info];
+        console.log(testArr);
+        for (let i = 0; i < testArr.length; i++) {
+          testArr[i].created_utc = moment
+            .unix(testArr[i].created_utc)
+            .format("MM/DD");
+        }
+        console.log(testArr);
+        this.setState({
+          data: testArr
+        });
       }
-      console.log(testArr);
-      this.setState({
-        data: testArr
-      });
+      SubmitQueryButton.classList.remove("spinner");
+      document.getElementById("DisableEffect").classList.remove("disable");
     });
   }
 
@@ -170,7 +212,7 @@ class Gallery extends React.Component {
     return (
       <div>
         <div className="ui segment">
-          <div className="ui two column very relaxed grid">
+          <div id="DisableEffect" className="ui two column very relaxed grid">
             <div className="column">
             <h4 className="ui center aligned grid">Sources</h4>
             <hr></hr>
@@ -247,6 +289,7 @@ class Gallery extends React.Component {
               </div>
               <section style={TextFieldContainerStyle}>
               <button
+                id="SubmitQueryButton"
                 onClick={this.handleSubmit}
                 class="ui button"
                 // style={TextFieldStyles}
@@ -255,9 +298,10 @@ class Gallery extends React.Component {
                 Submit
               </button>
               </section>
+              <small id="NoQueryFound">Sorry No Query Was Found [ •́ ‸ •̀ ] </small>
             </div>
 
-            <div className="column">
+            <div id="DisableFirst" className="column disable">
               <div>
                 <h4 className="ui center aligned grid">Tools</h4>
                 <hr />

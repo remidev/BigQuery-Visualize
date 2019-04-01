@@ -7,9 +7,9 @@ import {
 } from "semantic-ui-react";
 function GalleryFile(props) {
   const styles = {
-    backgroundColor: "whitesmoke",
-    border: "1px solid black",
     listStyleType: "none",
+    border: "1px solid black",
+    borderCollapse: "collapse",
   };
 
  var Sample1Title ="";
@@ -37,7 +37,7 @@ function GalleryFile(props) {
           <Header>JSON FILE RECIEVED:</Header> 
         {props.fileData.map(i => {
          console.log(i);
-         return (<small>{JSON.stringify(i)}</small>)
+         return (<li style={styles}>{JSON.stringify(i)}</li>)
         })}</div>
         <div> 
         <br></br>
