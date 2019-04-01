@@ -17,8 +17,8 @@ class SimpleLineChart extends React.Component {
     // console.log(props);
     this.state = {
       data: [],
-      width: 700,
-      height: 400,
+      width: 0,
+      height: 0,
       XAxis: "",
       dataKeyX: "",
       dataKeyY: ""
@@ -32,8 +32,11 @@ class SimpleLineChart extends React.Component {
         var AxisName = Object.keys(val)[0];
         var TempDataKeyX = Object.keys(val)[1];
         var TempDataKeyY = Object.keys(val)[2];
+        console.log(TempDataKeyX);
+        console.log(this.props.chart);
       }
     }
+
     if (!TempDataKeyX) TempDataKeyX = "";
     if (!TempDataKeyY) TempDataKeyY = "";
 
@@ -41,7 +44,9 @@ class SimpleLineChart extends React.Component {
       data: this.props.chart,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
-      dataKeyY: TempDataKeyY
+      dataKeyY: TempDataKeyY,
+      height:this.props.height,
+      width: this.props.width,
     });
   }
 
