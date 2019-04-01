@@ -32,7 +32,9 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       filter: [],
-      data: []
+      data: [],
+      height:1000,
+      width:4000,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,8 +52,14 @@ class Gallery extends React.Component {
       filter: [],
     });
 } 
-  updateGalleryData(chartName, data) {
+  updateGalleryData(chartName, data, height, width) {
     GalleryData[chartName].data = data;
+
+    console.log(chartName);
+    console.log(data);
+    console.log(height);
+    console.log(width)
+
   }
 
   handleSubmit(e) {
@@ -133,7 +141,7 @@ class Gallery extends React.Component {
     document.getElementById("DisableEffect").classList.add("disable");
     // Hit backend query route (/routes/index.js) and send query params inside queryInfo object
     axios.post("/api/give", { queryInfo }, {
-      timeout: 5000
+      timeout: 5000,
     }).catch(error => {
       if (error.code === 'ECONNABORTED')
           return "timeout"}).then(res => {
@@ -165,7 +173,7 @@ class Gallery extends React.Component {
 
   handleChange(e) {
     // console.log(e.target);
-    this.updateGalleryData(e.target.name, this.state.data);
+    this.updateGalleryData(e.target.name, this.state.data, this.state.height, this.state.width);
 
     //Array Checker for Filter
     if (e.target.checked && this.state.filter.indexOf(e.target.name) === -1) {

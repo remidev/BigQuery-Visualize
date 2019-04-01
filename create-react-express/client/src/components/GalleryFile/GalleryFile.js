@@ -28,7 +28,7 @@ function GalleryFile(props) {
       <Grid celled="internally" columns="equal" stackable>
         <Grid.Row textAlign="center">
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-           <Header> {props.chart} </Header>
+           <Header > {props.chart} </Header>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
           
@@ -36,7 +36,7 @@ function GalleryFile(props) {
         <div>
           <Header>JSON FILE RECIEVED:</Header> 
         {props.fileData.map(i => {
-         console.log(i);
+        //  console.log(i);
          return (<li style={styles}>{JSON.stringify(i)}</li>)
         })}</div>
         <div> 
