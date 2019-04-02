@@ -7,8 +7,8 @@ const router = require("express").Router();
 const { BigQuery } = require("@google-cloud/bigquery");
 
 // Set Credentials
-// const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json";
-const path = "/Users/teddy/Downloads/decoded-reducer-234800-2ce3ab5dfcc0.json";
+const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json";
+// const path = "/Users/teddy/Downloads/decoded-reducer-234800-2ce3ab5dfcc0.json";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 indico.apiKey = "84c0bce00bc55ebb8c950f6e351eee4d";
 

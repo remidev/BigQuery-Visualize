@@ -32,17 +32,6 @@
     display: none;
   }
 
-  @media only screen and (max-width : 1024px) {
-    /* .recharts-surface{
-      width: "484px";
-      height:"450px";
-    }
-    .recharts-wrapper{
-      width: "484px";
-      height:"450px";
-    } */
-    .ScaleContainer{
-      width: "484px";
-      height:"450px";
-    }
-}
+  .HideMe{
+    display: none !important;
+  }

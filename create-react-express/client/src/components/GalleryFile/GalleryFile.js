@@ -27,7 +27,7 @@ function GalleryFile(props) {
 
   return (
     <div>
-     <Segment style={{ padding: "0em", overflow:"hidden" }} vertical>
+     <Segment style={{ padding: "0em", height:"100vh", width:"100vw", overflow:"hidden"}} vertical>
       <Grid celled="internally" columns="equal" stackable>
         <Grid.Row textAlign="center">
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em", overflow:"hidden" }}>

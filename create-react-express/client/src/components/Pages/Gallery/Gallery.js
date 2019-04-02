@@ -23,7 +23,7 @@ const TextFieldContainerStyle = {
   display: "flex",
   marginLeft: "auto",
   marginRight: "auto",
-  justifyContent: "space-evenly"
+  justifyContent: "center"
 };
 
 // Note name is the X axis grid x,y,z... are the values must be named this way
@@ -34,10 +34,13 @@ class Gallery extends React.Component {
       filter: [],
       data: [],
       height: 1000,
-      width: 4000
+      width: 4000,
+      TheTempSource: 0
     };
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   UncheckAll() {
@@ -51,6 +54,7 @@ class Gallery extends React.Component {
       filter: []
     });
   }
+
   updateGalleryData(chartName, data, height, width) {
     GalleryData[chartName].data = data;
 
@@ -60,36 +64,118 @@ class Gallery extends React.Component {
     console.log(width);
   }
 
+  handleReset(e) {
+    e.preventDefault();
+    console.log("hello");
+
+    document.getElementById("RedditContentType").classList.add("HideMe");
+    document.getElementById("RedditField1").classList.add("HideMe");
+    document.getElementById("RedditField2").classList.add("HideMe");
+    document.getElementById("StackOverflowContentType").classList.add("HideMe");
+    document.getElementById("StackOverflowField1").classList.add("HideMe");
+    document.getElementById("StackOverflowField2").classList.add("HideMe");
+    document.getElementById("YearID").classList.add("HideMe");
+    document.getElementById("StaticTIME").classList.add("HideMe");
+    document.getElementById("SubmitQueryButton").classList.add("HideMe");
+    document.getElementById("ResetSource").classList.add("HideMe");
+    document.getElementById("SubmitSelect").classList.remove("HideMe");
+    
+    //Color Renewal
+    document.getElementById("Source").style.backgroundColor ="#f8f8f8";
+    document.getElementById("YearID").style.backgroundColor ="#f8f8f8";
+    document.getElementById("StaticTIME").style.backgroundColor ="#f8f8f8";
+
+    //Enable Source
+    document.getElementById("Source").classList.remove("disable");
+
+  }
+
+  handleSelect(e) {
+    e.preventDefault();
+
+    var Source = document.getElementById("Source");
+    var SelectedSource = Source.options[Source.selectedIndex].value;
+
+    document.getElementById("SubmitSelect").classList.add("HideMe");
+    if (SelectedSource === "fh-bigquery.reddit_") {
+      document.getElementById("RedditContentType").classList.remove("HideMe");
+      document.getElementById("RedditField1").classList.remove("HideMe");
+      document.getElementById("RedditField2").classList.remove("HideMe");
+      document.getElementById("StaticTIME").classList.remove("HideMe");
+      document.getElementById("YearID").classList.remove("HideMe");
+      document.getElementById("SubmitQueryButton").classList.remove("HideMe");
+
+      this.setState({
+        TheTempSource: 1
+      });
+    } else if (SelectedSource === "bigquery-public-data.stackoverflow.") {
+      document.getElementById("StackOverflowContentType").classList.remove("HideMe");
+      document.getElementById("StackOverflowField1").classList.remove("HideMe");
+      document.getElementById("StackOverflowField2").classList.remove("HideMe");
+      document.getElementById("StaticTIME").classList.remove("HideMe");
+      document.getElementById("YearID").classList.remove("HideMe");
+      document.getElementById("SubmitQueryButton").classList.remove("HideMe");
+
+      this.setState({
+        TheTempSource: 2
+      });
+    }
+    document.getElementById("Source").classList.add("disable");
+    document.getElementById("ResetSource").classList.remove("HideMe");
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.UncheckAll();
+    //
+    console.log(this.state.TheTempSource);
+    if (this.state.TheTempSource === 1) {
+      var ContentType = document.getElementsByClassName("ContentType")[0];
+      console.log(ContentType);
+      var SelectedContentType =
+        ContentType.options[ContentType.selectedIndex].value;
+      //This Above is the Content1 VALUE;
 
-    var SubmitQueryButton = document.getElementById("SubmitQueryButton");
+      var Content1 = document.getElementsByClassName("Field1")[0];
+      var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
+      //This Above is the Content1 VALUE;
+
+      var Content2 = document.getElementsByClassName("Field2")[0];
+      var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
+      //This Above is the Content2 VALUE;
+
+      var Year = document.getElementsByClassName("Year")[0];
+      var SelectedYear = Year.options[Year.selectedIndex].value;
+      //This Above is the Year VALUE;
+    } else if (this.state.TheTempSource === 2) {
+      var ContentType = document.getElementsByClassName("ContentType")[1];
+      console.log(ContentType);
+      var SelectedContentType =
+        ContentType.options[ContentType.selectedIndex].value;
+      //This Above is the Content1 VALUE;
+
+      var Content1 = document.getElementsByClassName("Field1")[1];
+      var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
+      //This Above is the Content1 VALUE;
+
+      var Content2 = document.getElementsByClassName("Field2")[1];
+      var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
+      //This Above is the Content2 VALUE;
+    }
 
     var Source = document.getElementById("Source");
     var SelectedSource = Source.options[Source.selectedIndex].value;
     //This Above is the SOURCE VALUE;
 
-    var ContentType = document.getElementById("ContentType");
-    var SelectedContentType =
-      ContentType.options[ContentType.selectedIndex].value;
-    //This Above is the Content1 VALUE;
-
-    var StaticTIME = document.getElementById("StaticTIME");
+    var StaticTIME = document.getElementsByClassName("StaticTIME")[0];
     var SelectedTIME = StaticTIME.options[StaticTIME.selectedIndex].value;
     //XAXIS ex. Page1 Page2 Page3
 
-    var Content1 = document.getElementById("Field1");
-    var SelectedContent1 = Content1.options[Content1.selectedIndex].value;
-    //This Above is the Content1 VALUE;
-
-    var Content2 = document.getElementById("Field2");
-    var SelectedContent2 = Content2.options[Content2.selectedIndex].value;
-    //This Above is the Content2 VALUE;
-
-    var Year = document.getElementById("Year");
+    var Year = document.getElementsByClassName("Year")[0];
     var SelectedYear = Year.options[Year.selectedIndex].value;
     //This Above is the Year VALUE;
+
+    var SubmitQueryButton = document.getElementById("SubmitQueryButton");
 
     console.log(
       SelectedSource,
@@ -156,7 +242,7 @@ class Gallery extends React.Component {
         "/api/give",
         { queryInfo },
         {
-          timeout: 15000
+          timeout: 10000
         }
       )
       .catch(error => {
@@ -264,14 +350,23 @@ class Gallery extends React.Component {
 
                 <p>
                   <select
-                    id="ContentType"
-                    class="ui dropdown"
+                    id="RedditContentType"
+                    class="ui dropdown ContentType HideMe"
                     style={TextFieldStyles}
                   >
                     {/* CONTENT TYPE DROP DOWNS */}
                     <option value="">Content Type</option>
                     <option value="comments">reddit comments</option>
                     <option value="posts">reddit post</option>
+                  </select>
+
+                  <select
+                    id="StackOverflowContentType"
+                    class="ui dropdown ContentType HideMe"
+                    style={TextFieldStyles}
+                  >
+                    {/* CONTENT TYPE DROP DOWNS */}
+                    <option value="">Content Type</option>
                     <option value="comments">stack comments</option>
                     <option value="stackoverflow_posts">stack post</option>
                   </select>
@@ -280,7 +375,7 @@ class Gallery extends React.Component {
                 <p>
                   <select
                     id="StaticTIME"
-                    class="ui dropdown"
+                    class="ui dropdown StaticTIME HideMe"
                     style={TextFieldStyles}
                   >
                     {/* STATIC DATE TIME DROP DOWN */}
@@ -290,8 +385,8 @@ class Gallery extends React.Component {
 
                 <p>
                   <select
-                    id="Field1"
-                    class="ui dropdown"
+                    id="RedditField1"
+                    class="ui dropdown Field1 HideMe"
                     style={TextFieldStyles}
                   >
                     {/* CONTENT-1 DROPDOWN [PUT TEXT DATA HERE] */}
@@ -304,6 +399,17 @@ class Gallery extends React.Component {
                     <option value="subreddit">Subreddit</option>
                     <option value="author">Author</option>
                     <option value="body">reddit comment text</option>
+                  </select>
+
+                  <select
+                    id="StackOverflowField1"
+                    class="ui dropdown Field1 HideMe"
+                    style={TextFieldStyles}
+                  >
+                    {/* CONTENT-1 DROPDOWN [PUT TEXT DATA HERE] */}
+                    <option value="">Content</option>
+                    {/* SHARED DATA KEYS */}
+                    <option value="score">Score</option>
                     {/* STACK DATA KEYS */}
                     <option value="view_count">stack post num views</option>
                     <option value="favorite_count">stack post num favs</option>
@@ -323,11 +429,11 @@ class Gallery extends React.Component {
 
                 <p>
                   <select
-                    id="Field2"
-                    class="ui dropdown"
+                    id="RedditField2"
+                    class="ui dropdown Field2 HideMe"
                     style={TextFieldStyles}
                   >
-                    {/* CONTENT-2 DROPDOWN */}
+                    {/* CONTENT-1 DROPDOWN [PUT TEXT DATA HERE] */}
                     <option value="">Content</option>
                     {/* SHARED DATA KEYS */}
                     <option value="score">Score</option>
@@ -337,6 +443,17 @@ class Gallery extends React.Component {
                     <option value="subreddit">Subreddit</option>
                     <option value="author">Author</option>
                     <option value="body">reddit comment text</option>
+                  </select>
+
+                  <select
+                    id="StackOverflowField2"
+                    class="ui dropdown Field2 HideMe"
+                    style={TextFieldStyles}
+                  >
+                    {/* CONTENT-1 DROPDOWN [PUT TEXT DATA HERE] */}
+                    <option value="">Content</option>
+                    {/* SHARED DATA KEYS */}
+                    <option value="score">Score</option>
                     {/* STACK DATA KEYS */}
                     <option value="view_count">stack post num views</option>
                     <option value="favorite_count">stack post num favs</option>
@@ -355,7 +472,11 @@ class Gallery extends React.Component {
                 </p>
 
                 <p>
-                  <select id="Year" class="ui dropdown" style={TextFieldStyles}>
+                  <select
+                    id="YearID"
+                    class="ui dropdown HideMe Year"
+                    style={TextFieldStyles}
+                  >
                     {/* YEAR DROPDOWN */}
                     <option value="">Year</option>
                     <option value="2016">2016</option>
@@ -375,14 +496,35 @@ class Gallery extends React.Component {
               </div>
               <section style={TextFieldContainerStyle}>
                 <button
+                  id="SubmitSelect"
+                  onClick={this.handleSelect}
+                  class="ui button"
+                  // style={TextFieldStyles}
+                  type="submit"
+                >
+                  I Want This Source!
+                </button>
+
+                <button
                   id="SubmitQueryButton"
                   onClick={this.handleSubmit}
-                  class="ui button"
+                  class="ui button HideMe"
                   // style={TextFieldStyles}
                   type="submit"
                 >
                   Submit
                 </button>
+
+                <button
+                  id="ResetSource"
+                  onClick={this.handleReset}
+                  class="ui button HideMe"
+                  // style={TextFieldStyles}
+                  type="submit"
+                >
+                  Reset Source
+                </button>
+
               </section>
               <small id="NoQueryFound">
                 Sorry No Query Was Found [ •́ ‸ •̀ ]{" "}
