@@ -265,7 +265,6 @@ const GalleryData = {
     type: "ScatterChart",
     chartName: "Simple Scatter Chart"
   },
-
   BiaxialChart: {
     // WORKS
     id: 14,
