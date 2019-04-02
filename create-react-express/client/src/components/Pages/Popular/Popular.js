@@ -1,34 +1,62 @@
-import React from 'react'
-import { Container, Header } from 'semantic-ui-react'
+import React from "react";
+import { Container, Header } from "semantic-ui-react";
+import GraphGIF from "./images/GraphGIF.jpg";
+const styleBox = {
+  border: "4px solid whitesmoke",
+  textAlign: "center"
+};
 
+const styleIMG = {
+  width: "600px",
+  height: "300px",
+  textAlign: "center",
+  border: "5px solid black",
+  borderRadius: "5%"
+};
 const Popular = () => (
-  <Container text>
-    <Header as='h2'>Popular</Header>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-      Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-      consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-      In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-      link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-      vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-      enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla
-      ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-      Curabitur ullamcorper ultricies nisi.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-      Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-      consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-      In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-      link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-      vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-      enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla
-      ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-      Curabitur ullamcorper ultricies nisi.
-    </p>
+  <Container style={styleBox} text>
+    <Header as="h2">Popular</Header>
+    <h3>
+      {" "}
+      Below, we compiled a list of interesting Searches you might like to try!
+    </h3>
+    <hr />
+    <Header as="h4">
+      Source: Reddit | ContentType: Reddit Comments | Content: Score | Content:
+      Ups | Year: 2007
+    </Header>
+    <Header as="h4">
+      Source: Reddit | ContentType: Reddit Comments | Content: Score | Content:
+      Ups | Year: 2005
+    </Header>{" "}
+    <Header as="h4">
+      Source: Stack Overflow | ContentType: Post | Content: Score | Content:
+      Comments | Year: 2012
+    </Header>{" "}
+    <Header as="h4">
+      Source: Reddit | ContentType: Reddit Comments | Content: Score | Content:
+      Ups | Year: 2006
+    </Header>{" "}
+    <Header as="h4">
+      Source: Stack Overflow | ContentType: Post | Content: Score | Content:
+      Comments | Year: 2009
+    </Header>{" "}
+    <Header as="h4">
+      Source: Stack Overflow | ContentType: Post | Content: Score | Content:
+      Comments | Year: 2011
+    </Header>{" "}
+    <Header as="h4">
+      Source: Stack Overflow | ContentType: Post | Content: Tags | Content:
+      Body | Year: 2012
+    </Header>{" "}
+    <Header as="h4">
+      Source: Stack Overflow | ContentType: Post | Content: Score | Content:
+      Comments | Year: 2014
+    </Header>{" "}
+   
+    <h1>Happy Graphing!</h1>
+    <img src={GraphGIF} style={styleIMG} />
   </Container>
-)
+);
 
-export default Popular
+export default Popular;
