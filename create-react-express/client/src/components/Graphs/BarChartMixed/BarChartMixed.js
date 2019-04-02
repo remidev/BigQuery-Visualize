@@ -12,16 +12,17 @@ import {
 } from "recharts";
 
 class BarChartMixed extends React.Component {
-  
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: ""
-    }
+    this.state = {
+      data: [],
+      width: 0,
+      height: 0,
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: ""
+    };
   }
 
   componentDidMount() {
@@ -38,6 +39,8 @@ class BarChartMixed extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -47,13 +50,13 @@ class BarChartMixed extends React.Component {
   render() {
     return (
       <BarChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={this.state.XAxis}/>
+        <XAxis dataKey={this.state.XAxis} />
         <YAxis />
         <Tooltip />
         <Legend />

@@ -12,18 +12,19 @@ import {
 } from "recharts";
 
 class BiaxialBarChart extends React.Component {
-
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: ""
-    }
+    this.state = {
+      data: [],
+      width: 0,
+      height: 0,
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: ""
+    };
   }
-  
+
   componentDidMount() {
     for (var key in this.props.chart[0]) {
       if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
@@ -38,6 +39,8 @@ class BiaxialBarChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -47,8 +50,8 @@ class BiaxialBarChart extends React.Component {
   render() {
     return (
       <BarChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >

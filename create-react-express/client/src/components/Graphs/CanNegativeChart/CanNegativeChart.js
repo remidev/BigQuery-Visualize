@@ -16,10 +16,12 @@ class CanNegativeChart extends React.Component {
     console.log(props);
     this.state = {
       data: [],
-      XAxis:"",
+      width: 0,
+      height: 0,
+      XAxis: "",
       dataKeyX: "",
       dataKeyY: "",
-      IntE: "",
+      IntE: ""
     };
   }
 
@@ -37,21 +39,23 @@ class CanNegativeChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
-      dataKeyY: TempDataKeyY,
+      dataKeyY: TempDataKeyY
     });
 
-    if(isNaN(this.state.dataKeyX)===false){
+    if (isNaN(this.state.dataKeyX) === false) {
       this.setState({
-        Int: this.state.dataKeyX,
-      })
-    }else if(isNaN(this.state.dataKeyY)===false){
+        Int: this.state.dataKeyX
+      });
+    } else if (isNaN(this.state.dataKeyY) === false) {
       this.setState({
-        Int: this.state.dataKeyY,
-      })
-    }else{
-      console.log("No Int Values")
+        Int: this.state.dataKeyY
+      });
+    } else {
+      console.log("No Int Values");
     }
   }
 
@@ -72,8 +76,8 @@ class CanNegativeChart extends React.Component {
   render() {
     return (
       <AreaChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >

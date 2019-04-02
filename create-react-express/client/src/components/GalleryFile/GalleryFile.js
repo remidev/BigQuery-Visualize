@@ -5,7 +5,10 @@ import {
   Header,
   Segment,
 } from "semantic-ui-react";
+
+
 function GalleryFile(props) {
+  
   const styles = {
     listStyleType: "none",
     border: "1px solid black",
@@ -24,11 +27,11 @@ function GalleryFile(props) {
 
   return (
     <div>
-     <Segment style={{ padding: "0em" }} vertical>
+     <Segment style={{ padding: "0em", overflow:"hidden" }} vertical>
       <Grid celled="internally" columns="equal" stackable>
         <Grid.Row textAlign="center">
-          <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-           <Header > {props.chart} </Header>
+          <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em", overflow:"hidden" }}>
+           <section> {props.chart} </section>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
           

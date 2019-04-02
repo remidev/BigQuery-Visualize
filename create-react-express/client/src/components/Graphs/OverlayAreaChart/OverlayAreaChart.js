@@ -11,19 +11,21 @@ import {
 } from "recharts";
 
 class OverlayAreaChart extends React.Component {
-//3 Contents
+  //3 Contents
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: "",
-     dataKeyZ: ""
-    }
+    this.state = {
+      data: [],
+      width: 0,
+      height: 0,
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: "",
+      dataKeyZ: ""
+    };
   }
-  
+
   componentDidMount() {
     for (var key in this.props.chart[0]) {
       if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
@@ -40,29 +42,52 @@ class OverlayAreaChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
-      XAxis:AxisName,
+      height: this.props.height,
+      width: this.props.width,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY,
       dataKeyZ: TempDataKeyZ
     });
   }
 
-    render () {
-        return (
-          <AreaChart width={700} height={400} data={this.state.data}
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-          <CartesianGrid strokeDasharray="3 3"/>
-          <XAxis dataKey={this.state.XAxis}/>
-          <YAxis/>
-          <Tooltip/>
-          <Area type='monotone' dataKey={this.state.dataKeyX} stackId="1" stroke='#8884d8' fill='#8884d8' />
-          <Area type='monotone' dataKey={this.state.dataKeyY} stackId="1" stroke='#82ca9d' fill='#82ca9d' />
-          <Area type='monotone' dataKey={this.state.dataKeyZ} stackId="1" stroke='#ffc658' fill='#ffc658' />
-          <Brush/>
-        </AreaChart>
-        
-      );
-    }
+  render() {
+    return (
+      <AreaChart
+        width={this.state.width}
+        height={this.state.height}
+        data={this.state.data}
+        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey={this.state.XAxis} />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey={this.state.dataKeyX}
+          stackId="1"
+          stroke="#8884d8"
+          fill="#8884d8"
+        />
+        <Area
+          type="monotone"
+          dataKey={this.state.dataKeyY}
+          stackId="1"
+          stroke="#82ca9d"
+          fill="#82ca9d"
+        />
+        <Area
+          type="monotone"
+          dataKey={this.state.dataKeyZ}
+          stackId="1"
+          stroke="#ffc658"
+          fill="#ffc658"
+        />
+        <Brush />
+      </AreaChart>
+    );
+  }
 }
 
 export default OverlayAreaChart;

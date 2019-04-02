@@ -14,17 +14,19 @@ import {
 } from "recharts";
 
 class ComposedLineBarChart extends React.Component {
-//Chart Accepts 3 Contents
+  //Chart Accepts 3 Contents
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: "",
-     dataKeyZ:"",
-    }
+    this.state = {
+      data: [],
+      XAxis: "",
+      width: 0,
+      height: 0,
+      dataKeyX: "",
+      dataKeyY: "",
+      dataKeyZ: ""
+    };
   }
 
   componentDidMount() {
@@ -43,29 +45,40 @@ class ComposedLineBarChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
-      XAxis:AxisName,
+      height: this.props.height,
+      width: this.props.width,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY,
       dataKeyZ: TempDataKeyZ
     });
   }
 
-    render () {
-        return (
-          <ComposedChart width={700} height={400} data={this.state.data}
-              margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-            <CartesianGrid stroke='#f5f5f5'/>
-            <XAxis dataKey={this.state.XAxis}/>
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Area type='monotone' dataKey={this.state.dataKeyZ} fill='#8884d8' stroke='#8884d8'/>
-            <Bar dataKey={this.state.dataKeyY} barSize={20} fill='#413ea0' />
-            <Line type='monotone' dataKey={this.state.dataKeyX} stroke='#ff7300' />
-            <Brush/>
-         </ComposedChart>
-      );
-    }
+  render() {
+    return (
+      <ComposedChart
+        width={this.state.width}
+        height={this.state.height}
+        data={this.state.data}
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+      >
+        <CartesianGrid stroke="#f5f5f5" />
+        <XAxis dataKey={this.state.XAxis} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Area
+          type="monotone"
+          dataKey={this.state.dataKeyZ}
+          fill="#8884d8"
+          stroke="#8884d8"
+        />
+        <Bar dataKey={this.state.dataKeyY} barSize={20} fill="#413ea0" />
+        <Line type="monotone" dataKey={this.state.dataKeyX} stroke="#ff7300" />
+        <Brush />
+      </ComposedChart>
+    );
+  }
 }
 
 export default ComposedLineBarChart;

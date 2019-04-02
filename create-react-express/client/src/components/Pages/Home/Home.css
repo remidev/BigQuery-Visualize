@@ -87,15 +87,16 @@ body {
   }
 
   .ui.vertical.segment:last-child {
-    border-bottom: none;
+    /* border-bottom: none;
     background-image: url("./Images//FooterGif.gif")  !important;
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: black;
+    background-color: black; */
     height: 100% !important;
 }
 .ui.inverted.segment:first-child, .ui.primary.inverted.segment {
   background-image: url("./Images/BackgroundGif1.gif")  !important;
+  background-size: cover !important;
 }
 
 .ui.vertical.segment:first-child {

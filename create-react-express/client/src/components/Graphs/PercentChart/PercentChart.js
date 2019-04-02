@@ -17,6 +17,8 @@ class PercentChart extends React.Component {
     this.state = {
       data: [],
       XAxis: "",
+      width: 0,
+      height: 0,
       dataKeyX: "",
       dataKeyY: "",
       dataKeyZ: ""
@@ -39,7 +41,9 @@ class PercentChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
-      XAxis:AxisName,
+      height: this.props.height,
+      width: this.props.width,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY,
       dataKeyZ: TempDataKeyZ
@@ -80,8 +84,8 @@ class PercentChart extends React.Component {
   render() {
     return (
       <AreaChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         stackOffset="expand"
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}

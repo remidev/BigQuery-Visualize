@@ -14,19 +14,19 @@ import {
 } from "recharts";
 
 class ComposedVerticalLineBarChart extends React.Component {
-  
   constructor(props) {
     super(props);
     console.log(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: "",
-     dataKeyZ:"",
-    }
+    this.state = {
+      data: [],
+      width: 0,
+      height: 0,
+      XAxis: "",
+      dataKeyX: "",
+      dataKeyY: "",
+      dataKeyZ: ""
+    };
   }
-  
 
   componentDidMount() {
     for (var key in this.props.chart[0]) {
@@ -44,7 +44,9 @@ class ComposedVerticalLineBarChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
-      XAxis:AxisName,
+      height: this.props.height,
+      width: this.props.width,
+      XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY,
       dataKeyZ: TempDataKeyZ
@@ -55,8 +57,8 @@ class ComposedVerticalLineBarChart extends React.Component {
     return (
       <ComposedChart
         layout="vertical"
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
@@ -68,7 +70,7 @@ class ComposedVerticalLineBarChart extends React.Component {
         <Area dataKey={this.state.dataKeyZ} fill="#8884d8" stroke="#8884d8" />
         <Bar dataKey={this.state.dataKeyY} barSize={25} fill="#413ea0" />
         <Line dataKey={this.state.dataKeyX} stroke="#ff7300" />
-        <Brush/>
+        <Brush />
       </ComposedChart>
     );
   }

@@ -42,11 +42,11 @@ class SimpleLineChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY,
-      height:this.props.height,
-      width: this.props.width,
     });
   }
 
@@ -59,7 +59,7 @@ class SimpleLineChart extends React.Component {
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <XAxis dataKey={this.state.XAxis} />
-        <YAxis/>
+        <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />

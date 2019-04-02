@@ -19,6 +19,8 @@ class ComposedDataChart extends React.Component {
     console.log(props);
     this.state = {
       data: [],
+      width: 0,
+      height: 0,
       dataKeyX: "",
       dataKeyY: ""
     };
@@ -38,6 +40,8 @@ class ComposedDataChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -49,8 +53,8 @@ class ComposedDataChart extends React.Component {
       <div>
         <small>Graphed: {this.state.dataKeyX}</small>
         <ComposedChart
-          width={700}
-          height={400}
+          width={this.state.width}
+          height={this.state.height}
           data={this.state.data}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         >
@@ -68,11 +72,11 @@ class ComposedDataChart extends React.Component {
           <Brush />
         </ComposedChart>
 
-<hr></hr>
-<small>Graphed: {this.state.dataKeyY}</small>
+        <hr />
+        <small>Graphed: {this.state.dataKeyY}</small>
         <ComposedChart
-          width={700}
-          height={400}
+          width={this.state.width}
+          height={this.state.height}
           data={this.state.data}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         >

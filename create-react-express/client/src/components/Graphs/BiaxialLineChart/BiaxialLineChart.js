@@ -17,6 +17,8 @@ class BiaxialLineChart extends React.Component {
     console.log(props);
     this.state = {
       data: [],
+      width: 0,
+      height: 0,
       dataKeyX: "",
       dataKeyY: ""
     };
@@ -36,6 +38,8 @@ class BiaxialLineChart extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -45,8 +49,8 @@ class BiaxialLineChart extends React.Component {
   render() {
     return (
       <LineChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >

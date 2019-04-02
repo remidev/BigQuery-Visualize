@@ -12,17 +12,18 @@ import {
 } from "recharts";
 
 class BarChartN extends React.Component {
-  
   constructor(props) {
     super(props);
-    this.state={
-     data: [],
-     XAxis: "",
-     dataKeyX: "",
-     dataKeyY: ""
-    }
+    this.state = {
+      data: [],
+      XAxis: "",
+      width: 0,
+      height: 0,
+      dataKeyX: "",
+      dataKeyY: ""
+    };
   }
-  
+
   componentDidMount() {
     for (var key in this.props.chart[0]) {
       if (Object.prototype.hasOwnProperty.call(this.props.chart[0], key)) {
@@ -37,6 +38,8 @@ class BarChartN extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -46,8 +49,8 @@ class BarChartN extends React.Component {
   render() {
     return (
       <BarChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
@@ -57,7 +60,7 @@ class BarChartN extends React.Component {
         <Tooltip />
         <Legend />
         <Bar dataKey={this.state.dataKeyY} fill="#8884d8" />
-        <Bar dataKey={this.state.dataKeyX}fill="#82ca9d" />
+        <Bar dataKey={this.state.dataKeyX} fill="#82ca9d" />
         <Brush />
       </BarChart>
     );

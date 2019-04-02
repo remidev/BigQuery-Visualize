@@ -15,6 +15,8 @@ class ScatterChartN extends React.Component {
     super(props);
     this.state = {
       data: [],
+      width: 0,
+      height: 0,
       XAxis: "",
       dataKeyX: "",
       dataKeyY: ""
@@ -35,6 +37,8 @@ class ScatterChartN extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
@@ -44,13 +48,21 @@ class ScatterChartN extends React.Component {
   render() {
     return (
       <ScatterChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
         <CartesianGrid />
-        <XAxis dataKey={this.state.dataKeyX} type="number" name={this.state.dataKeyX} />
-        <YAxis dataKey={this.state.dataKeyY} type="number" name={this.state.dataKeyY} />
+        <XAxis
+          dataKey={this.state.dataKeyX}
+          type="number"
+          name={this.state.dataKeyX}
+        />
+        <YAxis
+          dataKey={this.state.dataKeyY}
+          type="number"
+          name={this.state.dataKeyY}
+        />
         <Scatter name="ScatterPlot" data={this.state.data} fill="#8884d8" />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       </ScatterChart>

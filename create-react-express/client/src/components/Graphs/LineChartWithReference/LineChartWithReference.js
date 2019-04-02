@@ -12,16 +12,20 @@ import {
   Brush
 } from "recharts";
 
+
 class LineChartWithReference extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
     this.state = {
       XAxis: "",
+      width: 0,
+      height: 0,
+      data: [],
       dataKeyX: "",
       dataKeyY: "",
       MaxValue: "",
-      MinValue:"",
+      MinValue: ""
     };
   }
 
@@ -38,6 +42,8 @@ class LineChartWithReference extends React.Component {
 
         this.setState({
           data: this.props.chart,
+          height: this.props.height,
+          width: this.props.width,
           XAxis: AxisName,
           dataKeyX: TempDataKeyX,
           dataKeyY: TempDataKeyY
@@ -66,8 +72,9 @@ class LineChartWithReference extends React.Component {
   render() {
     return (
       <LineChart
-        width={700}
-        height={400}
+        // style={PaddingBetweenCharts}
+        width={this.state.width}
+        height={this.state.height}
         data={this.state.data}
         margin={{ top: 20, right: 50, left: 20, bottom: 5 }}
       >

@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
+  Tooltip
   // Legend
 } from "recharts";
 
@@ -17,6 +17,8 @@ class ScatterChartMultiY extends React.Component {
     console.log(props);
     this.state = {
       data: [],
+      width: 0,
+      height: 0,
       XAxis: "",
       dataKeyX: "",
       dataKeyY: ""
@@ -37,21 +39,26 @@ class ScatterChartMultiY extends React.Component {
 
     this.setState({
       data: this.props.chart,
+      height: this.props.height,
+      width: this.props.width,
       XAxis: AxisName,
       dataKeyX: TempDataKeyX,
       dataKeyY: TempDataKeyY
     });
   }
 
-
   render() {
     return (
       <ScatterChart
-        width={700}
-        height={400}
+        width={this.state.width}
+        height={this.state.height}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
       >
-        <XAxis type="number" dataKey={this.state.dataKeyX} name={this.state.dataKeyX}  />
+        <XAxis
+          type="number"
+          dataKey={this.state.dataKeyX}
+          name={this.state.dataKeyX}
+        />
         <CartesianGrid />
         <YAxis
           yAxisId="left"
@@ -67,8 +74,18 @@ class ScatterChartMultiY extends React.Component {
           stroke="#82ca9d"
         />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-        <Scatter yAxisId="left" name="A school" data={this.state.data} fill="#8884d8" />
-        <Scatter yAxisId="right" name="A school" data={this.state.data1} fill="#82ca9d" />
+        <Scatter
+          yAxisId="left"
+          name="A school"
+          data={this.state.data}
+          fill="#8884d8"
+        />
+        <Scatter
+          yAxisId="right"
+          name="A school"
+          data={this.state.data1}
+          fill="#82ca9d"
+        />
         {/* More Data Data1 */}
       </ScatterChart>
     );
