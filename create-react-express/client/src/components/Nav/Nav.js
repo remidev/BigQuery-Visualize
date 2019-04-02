@@ -12,7 +12,7 @@ function Nav() {
       <Grid padded className="tablet computer only">
         <Menu borderless inverted fluid fixed="top">
           <Menu.Item header as="a" href="/home"> 
-            Scrape&Compare
+          KT
           </Menu.Item>
 
           <Menu.Menu position="right">

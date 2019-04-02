@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Mern Demo",
   "private": true,
-  "proxy": "http://localhost:3030/",
+  "proxy": "http://localhost:3035/",
   "dependencies": {
     "@google-cloud/bigquery": "^2.1.0",
     "axios": "^0.18.0",

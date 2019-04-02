@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-
+import DivGif1 from "./Images/DivGif1.gif"
+import BigQuery from "./Images/BigQuery.png"
+// import FooterGif from "./Images/FooterGif.gif"
 import "semantic-ui-css/semantic.min.css";
+import "./Home.css";
 
 import {
   Button,
@@ -23,7 +26,7 @@ const Home = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Abstract Data Analytics"
+      content="KT"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -175,7 +178,7 @@ const HomepageLayout = () => (
               bordered
               rounded
               size="large"
-              // src="./DivGif1.gif"
+              src={DivGif1}
             />
           </Grid.Column>
         </Grid.Row>
@@ -200,11 +203,10 @@ const HomepageLayout = () => (
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
             <Header as="h3" style={{ fontSize: "2em" }}>
-             Google Big Query!
+             Google Big Query!  <Image size="small" middle aligned src={BigQuery} />
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              {/* <Image avatar src="/images/avatar/large/nan.jpg" />
-              <b>Nan</b> Chief Fun Officer Acme Toys */}
+              
               Most of our data is supplied by Google Big Query Itself.
               It provides massively large datasets working in conjunction with Google Storage.
             </p>
@@ -264,7 +266,7 @@ const HomepageLayout = () => (
                 <List.Item as="a" href="/about">About</List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={7}>
+            <Grid.Column width={7} >
               <Header as="h4" inverted>
                 Wow You Reached The End~
               </Header>

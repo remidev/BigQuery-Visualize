@@ -1,34 +1,98 @@
-import React from 'react'
-import { Container, Header } from 'semantic-ui-react'
+import React, { Component } from "react";
 
-const Statistics = () => (
-  <Container text>
-    <Header as='h2'>Statistics</Header>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-      Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-      consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-      In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-      link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-      vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-      enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla
-      ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-      Curabitur ullamcorper ultricies nisi.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-      Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-      consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-      In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-      link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-      vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-      enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla
-      ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-      Curabitur ullamcorper ultricies nisi.
-    </p>
-  </Container>
-)
+import "semantic-ui-css/semantic.min.css";
+import TestImage from "./Images/testImg.jpeg";
+import {
+  Button,
+  Container,
+  Dropdown,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Menu,
+  Segment
+} from "semantic-ui-react";
 
-export default Statistics
+import "./App.css";
+
+class Statistics extends Component {
+  state = {
+    dropdownMenuStyle: {
+      display: "none"
+    }
+  };
+
+  handleToggleDropdownMenu = () => {
+    let newState = Object.assign({}, this.state);
+    if (newState.dropdownMenuStyle.display === "none") {
+      newState.dropdownMenuStyle = { display: "flex" };
+    } else {
+      newState.dropdownMenuStyle = { display: "none" };
+    }
+
+    this.setState(newState);
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Container>
+          <Segment vertical>
+            <Grid stackable>
+              <Grid.Column width={12}>
+                <Header as="h1">
+                We Are  
+                  <span className="sub"> Statistics!</span>
+                </Header>
+                <p>
+                Statistics is the science concerned with developing and studying methods for collecting, analyzing, interpreting and presenting empirical data. Statistics is a highly interdisciplinary field; research in statistics finds applicability in virtually all scientific fields and research questions in the various scientific fields motivate the development of new statistical methods and theory.
+                </p>
+              </Grid.Column>
+             
+              <Grid.Column width={12}>
+                <Header as="h1">
+                  Oh yeah, <span className="sub">it's that good.</span>
+                </Header>
+                <p>
+                  Donec ullamcorper nulla non metus auctor fringilla. Vestibulum
+                  id ligula porta felis euismod semper. Praesent commodo cursus
+                  magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus
+                  ac cursus commodo.
+                </p>
+              </Grid.Column>
+            </Grid>
+            <Grid.Column width={12}>
+                <Header as="h1">
+                 
+                </Header>
+                <p>
+                  Donec ullamcorper nulla non metus auctor fringilla. Vestibulum
+                  id ligula porta felis euismod semper. Praesent commodo cursus
+                  magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus
+                  ac cursus commodo.
+                </p>
+              </Grid.Column>
+          </Segment>
+          <Segment>
+            <Grid stackable>
+              <Grid.Column width={10}>
+                <Header as="h1">
+                A Catalyst for <span className="sub">Change</span>
+                </Header>
+                <p>
+                  "How many legs does the average person have?" <br></br>A logical system
+                  will answer ~1.99 <br></br> A statistical system will answer 2
+                </p>
+              </Grid.Column>
+              <Grid.Column width={6}>
+                <Image src={TestImage} />
+              </Grid.Column>
+            </Grid>
+          </Segment>
+        </Container>
+      </div>
+    );
+  }
+}
+export default Statistics;

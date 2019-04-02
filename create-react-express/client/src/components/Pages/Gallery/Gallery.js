@@ -168,8 +168,7 @@ class Gallery extends React.Component {
         } else {
           document.getElementById("DisableFirst").classList.remove("disable");
           document.getElementById("NoQueryFound").style.display = "none";
-          console.log(res);
-          console.log(res.data[0]);
+
           var info = res.data[0];
           console.log(info);
           var testArr = [...info];
@@ -230,7 +229,7 @@ class Gallery extends React.Component {
           <GalleryFile
             chart={value.chart()}
             fileData={this.state.data}
-            key={value.id}
+            key={key}
             handleChange={this.handleChange}
           />
         );
