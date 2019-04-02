@@ -153,7 +153,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                     AND ${content2} IS NOT NULL
                     AND EXTRACT( YEAR FROM creation_date) = ${year}
                   ORDER BY
-                    (SELECT IF [content1 or content2 are strings] ((${content1}), "YES","")) DESC
+                    ${content1} DESC
                   LIMIT 
                     200
                 `;
