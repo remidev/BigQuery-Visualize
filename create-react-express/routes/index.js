@@ -132,7 +132,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   WHERE
                     EXTRACT( YEAR FROM creation_date) = ${year}
                   ORDER BY 
-                    ${content2} ASC 
+                    ${content1} DESC
                   LIMIT
                     20
                 `;
