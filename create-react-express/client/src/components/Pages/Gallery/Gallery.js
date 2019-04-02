@@ -253,9 +253,12 @@ class Gallery extends React.Component {
                     class="ui dropdown"
                     style={TextFieldStyles}
                   >
+                    {/* DATA SOURCE DROP DOWNS */}
                     <option value="">Source</option>
                     <option value="fh-bigquery.reddit_">Reddit</option>
-                    <option value="StacksOverflow">Stacks Overflow</option>
+                    <option value="bigquery-public-data.stackoverflow.">
+                      StackOverflow
+                    </option>
                   </select>
                 </p>
 
@@ -265,9 +268,12 @@ class Gallery extends React.Component {
                     class="ui dropdown"
                     style={TextFieldStyles}
                   >
-                    <option value="">Content</option>
-                    <option value="comments">comments</option>
-                    <option value="posts">post</option>
+                    {/* CONTENT TYPE DROP DOWNS */}
+                    <option value="">Content Type</option>
+                    <option value="comments">reddit comments</option>
+                    <option value="posts">reddit post</option>
+                    <option value="comments">stack comments</option>
+                    <option value="stackoverflow_posts">stack post</option>
                   </select>
                 </p>
 
@@ -277,6 +283,7 @@ class Gallery extends React.Component {
                     class="ui dropdown"
                     style={TextFieldStyles}
                   >
+                    {/* STATIC DATE TIME DROP DOWN */}
                     <option value="created_utc">Time Created</option>
                   </select>
                 </p>
@@ -287,13 +294,30 @@ class Gallery extends React.Component {
                     class="ui dropdown"
                     style={TextFieldStyles}
                   >
+                    {/* CONTENT-1 DROPDOWN [PUT TEXT DATA HERE] */}
                     <option value="">Content</option>
+                    {/* SHARED DATA KEYS */}
+                    <option value="score">Score</option>
+                    {/* REDDIT DATA KEYS*/}
+                    <option value="ups">reddit upvotes</option>
+                    <option value="downs">reddit downvotes</option>
                     <option value="subreddit">Subreddit</option>
                     <option value="author">Author</option>
-                    <option value="ups">Ups</option>
-                    {/* <option value="downs">Downs</option> */}
-                    <option value="score">Score</option>
-                    <option value="body">Body</option>
+                    <option value="body">reddit comment text</option>
+                    {/* STACK DATA KEYS */}
+                    <option value="view_count">stack post num views</option>
+                    <option value="favorite_count">stack post num favs</option>
+                    <option value="answer_count">stack post num answers</option>
+                    <option value="comment_count">
+                      stack post num comments
+                    </option>
+                    <option value="last_activity_date">
+                      stack post date last active
+                    </option>
+                    <option value="title">stack post title</option>
+                    <option value="body">stack post body</option>
+                    <option value="tags">stack post tags</option>
+                    <option value="text">stack comment text</option>
                   </select>
                 </p>
 
@@ -303,19 +327,39 @@ class Gallery extends React.Component {
                     class="ui dropdown"
                     style={TextFieldStyles}
                   >
+                    {/* CONTENT-2 DROPDOWN */}
                     <option value="">Content</option>
+                    {/* SHARED DATA KEYS */}
+                    <option value="score">Score</option>
+                    {/* REDDIT DATA KEYS*/}
+                    <option value="ups">reddit upvotes</option>
+                    <option value="downs">reddit downvotes</option>
                     <option value="subreddit">Subreddit</option>
                     <option value="author">Author</option>
-                    <option value="ups">Ups</option>
-                    {/* <option value="downs">Downs</option> */}
-                    <option value="score">Score</option>
-                    <option value="body">Body</option>
+                    <option value="body">reddit comment text</option>
+                    {/* STACK DATA KEYS */}
+                    <option value="view_count">stack post num views</option>
+                    <option value="favorite_count">stack post num favs</option>
+                    <option value="answer_count">stack post num answers</option>
+                    <option value="comment_count">
+                      stack post num comments
+                    </option>
+                    <option value="last_activity_date">
+                      stack post date last active
+                    </option>
+                    <option value="title">stack post title</option>
+                    <option value="body">stack post body</option>
+                    <option value="tags">stack post tags</option>
+                    <option value="text">stack comment text</option>
                   </select>
                 </p>
 
                 <p>
                   <select id="Year" class="ui dropdown" style={TextFieldStyles}>
+                    {/* YEAR DROPDOWN */}
                     <option value="">Year</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
                     <option value="2014">2014</option>
                     <option value="2013">2013</option>
                     <option value="2012">2012</option>
