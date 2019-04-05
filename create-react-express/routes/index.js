@@ -7,8 +7,8 @@ const router = require("express").Router();
 const { BigQuery } = require("@google-cloud/bigquery");
 
 // Set Credentials
-const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json";
-// const path = "/Users/teddy/Downloads/decoded-reducer-234800-2ce3ab5dfcc0.json";
+// const path = "/Users/kevinz/Downloads/decoded-reducer-234800-b532ca7bb227.json";
+const path = "/Users/teddy/Downloads/decoded-reducer-234800-00cde844182a.json";
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path;
 indico.apiKey = "84c0bce00bc55ebb8c950f6e351eee4d";
 
@@ -56,7 +56,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   ORDER BY 
                     ${content2} DESC
                   LIMIT
-                    20
+                    200
                 `;
       //=============================================================
       // Content 2 contains string type...
@@ -73,7 +73,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   ORDER BY 
                     ${content1} DESC
                   LIMIT
-                    20
+                    200
                 `;
       //=============================================================
       //Both contain string values...
@@ -93,7 +93,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   ORDER BY 
                     ${Xaxis} DESC
                   LIMIT
-                    20
+                    200
                 `;
       //=============================================================
       // If neither...
@@ -110,7 +110,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   ORDER BY 
                     ${content1},${content2} DESC
                   LIMIT
-                    20
+                    200
                 `;
       //=============================================================
     }
@@ -134,7 +134,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                   ORDER BY 
                     ${content1} DESC
                   LIMIT
-                    20
+                    200
                 `;
       //=============================================================
 
@@ -153,7 +153,7 @@ async function query(source, contentType, Xaxis, content1, content2, year) {
                     AND ${content2} IS NOT NULL
                     AND EXTRACT( YEAR FROM creation_date) = ${year}
                   ORDER BY
-                    ${content1} DESC
+                    ${content1}, ${content2} DESC 
                   LIMIT 
                     200
                 `;
