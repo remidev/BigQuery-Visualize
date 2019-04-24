@@ -2,23 +2,17 @@
 
 ## Projet Description
 
-```
 Users build and run simplified SQL queries on public tech-flavored social media data from Google BigQuery API via the Node.js client library.
-
 The requested data is then viewable in a number of graphical formats created using d3.js and recharts.js.
-
 Additionally, statistical metadata generated using simple-statistics.js is also displayed alongside the graphs.
 
 For help getting started, installation instructions, example usage or a list of technologies we used, please see below.
-```
 
 <hr>
 
 ## Getting Started
 
-    These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
-
-<hr>
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
 ### 1. Prerequisites
 
@@ -26,8 +20,6 @@ For help getting started, installation instructions, example usage or a list of 
 - Set up Node.js
   - [How to setup Node.js](https://cloud.google.com/nodejs/docs/setup)
     <br>
-
-<hr>
 
 ### 2. Installation and Setup
 
@@ -46,20 +38,29 @@ See [Google BigQuery Quickstart](https://cloud.google.com/bigquery/docs/quicksta
 
 ## Demo Video
 
+[In Progress]
+
 <hr>
 
 ## Built With:
 
 <br>
 
-|                      FRONT END                       | \|  |                            BACK END                            |
-| :--------------------------------------------------: | :-: | :------------------------------------------------------------: |
-|            [React](https://reactjs.org/)             | \|  |     [Google BigQuery](https://cloud.google.com/bigquery/)      |
-| [Semantics UI React](https://react.semantic-ui.com/) | \|  | [BigQuery Node.js Library](https://cloud.google.com/bigquery/) |
-|              [D3.js](https://d3js.org/)              | \|  |       [Simple-Statistics](https://simplestatistics.org/)       |
-|      [Recharts](http://recharts.org/en-US/blog)      | \|  |               [Moment.js](https://momentjs.com/)               |
+|                      FRONT END                       |                            BACK END                            |
+| :--------------------------------------------------: | :------------------------------------------------------------: |
+|            [React](https://reactjs.org/)             |     [Google BigQuery](https://cloud.google.com/bigquery/)      |
+| [Semantics UI React](https://react.semantic-ui.com/) | [BigQuery Node.js Library](https://cloud.google.com/bigquery/) |
+|              [D3.js](https://d3js.org/)              |        [Express](https://www.npmjs.com/package/express)        |
+|      [Recharts](http://recharts.org/en-US/blog)      |               [Moment.js](https://momentjs.com/)               |
+|  [Simple-Statistics](https://simplestatistics.org/)  |      [nodemon.js](https://www.npmjs.com/package/nodemon)       |
 
 <br>
+
+Additional Utility Used:
+
+1. Lodash -(https://lodash.com/)
+2. Axios - (https://www.npmjs.com/package/axios)
+
 <br>
 
 <hr>
@@ -71,3 +72,7 @@ See [Google BigQuery Quickstart](https://cloud.google.com/bigquery/docs/quicksta
 - _Theodore Newman_ - (https://github.com/remidev)
 
 <hr>
+
+## License
+
+[MIT](LICENSE) © Kevin Zhang & Theodore Newman
